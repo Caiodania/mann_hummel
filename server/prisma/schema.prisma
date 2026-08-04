@@ -1,0 +1,94 @@
+// MANN+HUMMEL planner — data model (single source of truth).
+// Provider is SQLite — no Docker or external server required.
+// The database file is created automatically at prisma/dev.db
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Member {
+  id     String @id
+  name   String
+  role   String
+  color  String
+
+  players     ProjectPlayer[]
+  activities  Activity[]
+  submissions Submission[]   @relation("SkamSubmissions")
+}
+
+model Project {
+  id         String  @id
+  code       String
+  name       String?
+  client     String
+  type       String // 'STD' | 'NPI'
+  npiSubtype String? // 'G'|'H'|'I'|'P'|'X'
+  startWeek  String
+  endWeek    String
+  stage      String
+  risk       String // 'baixo'|'medio'|'alto'
+  reading    String // 'clara'|'confirmar'
+  valueMio   Float   @default(0)
+
+  players     ProjectPlayer[]
+  activities  Activity[]
+  submissions Submission[]
+  nomination  Nomination?
+}
+
+model ProjectPlayer {
+  id        Int     @id @default(autoincrement())
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String
+  member    Member  @relation(fields: [memberId], references: [id])
+  memberId  String
+  role      String
+  hours     Float
+
+  @@index([projectId])
+}
+
+model Activity {
+  id        String  @id
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String
+  member    Member  @relation(fields: [memberId], references: [id])
+  memberId  String
+  week      String
+  day       String?
+  title     String
+  role      String
+  loadDays  Float
+
+  @@index([projectId])
+  @@index([memberId])
+}
+
+model Submission {
+  id           Int     @id @default(autoincrement())
+  project      Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId    String
+  n            Int
+  deliveryDate String
+  valueMio     Float
+  skam         Member  @relation("SkamSubmissions", fields: [skamId], references: [id])
+  skamId       String
+
+  @@unique([projectId, n])
+}
+
+model Nomination {
+  id        Int     @id @default(autoincrement())
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String  @unique
+  sopDate   String
+  koDate    String
+  valueMio  Float
+  type      String // 'STD' | 'NPI'
+}

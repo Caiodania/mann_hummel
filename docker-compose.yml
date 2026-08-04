@@ -1,0 +1,23 @@
+# PostgreSQL for the MANN+HUMMEL planner backend.
+# Start with:  docker compose up -d
+services:
+  db:
+    image: postgres:16
+    container_name: mh_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: mh
+      POSTGRES_PASSWORD: mh
+      POSTGRES_DB: mannhummel
+    ports:
+      - '5432:5432'
+    volumes:
+      - mh_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U mh -d mannhummel']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  mh_pgdata:
