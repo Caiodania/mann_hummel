@@ -1,6 +1,9 @@
 import express, { type Request, type Response, type NextFunction } from 'express'
 import cors from 'cors'
 import { ZodError } from 'zod'
+import { existsSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
 import { prisma } from './db.js'
 import { getAppState } from './state.js'
 import { requireApiKey } from './auth.js'
@@ -223,6 +226,17 @@ app.patch('/api/activities/:id/move', wrap(async (req, res) => {
   res.json(await getAppState())
 }))
 
+// Serve the built frontend (repo-root dist/) when present, so a single
+// process can host both the API and the SPA — the simplest production setup
+// (one URL, no CORS/cross-origin proxy to configure). Absent in local dev
+// (Vite's own dev server + proxy handles the frontend there instead), so this
+// never interferes with `npm run dev`.
+const distDir = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'dist')
+if (existsSync(distDir)) {
+  app.use(express.static(distDir))
+  app.get(/^(?!\/api\/).*/, (_req, res) => res.sendFile(join(distDir, 'index.html')))
+}
+
 // error handler — log full detail on the server, return a sanitized body.
 // Prisma error messages can include absolute filesystem paths and query
 // internals, so never echo err.message to the client in production (item 2).
@@ -238,9 +252,15 @@ app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
   res.status(500).json(body)
 })
 
-// Use a dedicated var (NOT the generic PORT, which Vite/preview tooling sets to
-// 5173) so the API always binds the port the frontend proxy targets.
-const PORT = Number(process.env.API_PORT ?? 3001)
+// Hosts like Render/Railway/Heroku assign the port via PORT and require the
+// process to bind to it — but only trust it in production. Locally, PORT can
+// leak into this process from the sibling Vite dev server (`concurrently`
+// forwards the whole parent environment to both children, and dev tooling
+// commonly sets PORT=5173 for it), so local dev always uses API_PORT instead.
+const PORT =
+  process.env.NODE_ENV === 'production'
+    ? Number(process.env.PORT ?? process.env.API_PORT ?? 3001)
+    : Number(process.env.API_PORT ?? 3001)
 const server = app.listen(PORT, () =>
   console.log(`API on http://localhost:${PORT}`),
 )
