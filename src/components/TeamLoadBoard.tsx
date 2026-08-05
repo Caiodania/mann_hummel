@@ -9,8 +9,9 @@ import {
   type Role,
   type Weekday,
 } from '../types'
-import { Avatar, Modal, RoleBadge } from './ui'
+import { Avatar, Modal, RiskBadge, RoleBadge, RolePills } from './ui'
 import { ProjectModal } from './ProjectModal'
+import { ProjectDetail } from './ProjectDetail'
 
 const CAPACITY_DAYS = 5 // work-days per member per week before overload
 const DAY_W = 106 // px per weekday sub-column
@@ -25,10 +26,11 @@ export function TeamLoadBoard() {
   }, [state.projects, state.activities])
   const { weeks, onScroll } = useWeekRail(2, 12, coverKeys)
   const [search, setSearch] = useState('')
-  const [memberFilter, setMemberFilter] = useState<string[]>([])
+  const [roleFilter, setRoleFilter] = useState<Role[]>([])
   const [dragOver, setDragOver] = useState<string | null>(null)
   const [editing, setEditing] = useState<Activity | null>(null)
   const [editingProject, setEditingProject] = useState<Project | null>(null)
+  const [detailProject, setDetailProject] = useState<Project | null>(null)
 
   const memberById = useMemo(
     () => new Map(state.members.map((m) => [m.id, m])),
@@ -41,17 +43,27 @@ export function TeamLoadBoard() {
 
   const q = search.trim().toLowerCase()
   const matches = (a: Activity) => {
-    if (memberFilter.length && !memberFilter.includes(a.memberId)) return false
+    if (roleFilter.length && !roleFilter.includes(a.role)) return false
     if (!q) return true
     const p = projectById.get(a.projectId)
+    const m = memberById.get(a.memberId)
     return (
       a.title.toLowerCase().includes(q) ||
       (p?.code.toLowerCase().includes(q) ?? false) ||
-      (p?.client.toLowerCase().includes(q) ?? false)
+      (p?.client.toLowerCase().includes(q) ?? false) ||
+      (m?.name.toLowerCase().includes(q) ?? false)
     )
   }
 
   const visibleActs = state.activities.filter(matches)
+
+  // total allocated days per project, respecting the active member/search filters
+  const daysByProject = useMemo(() => {
+    const map = new Map<string, number>()
+    for (const a of visibleActs)
+      map.set(a.projectId, (map.get(a.projectId) ?? 0) + a.loadDays)
+    return map
+  }, [visibleActs])
 
   // activities keyed by projectId|week|day (undated → SEG)
   const cellActs = useMemo(() => {
@@ -85,19 +97,16 @@ export function TeamLoadBoard() {
       topDays = d
       topMember = memberById.get(mid)?.name.split(' ')[0] ?? '—'
     }
-  const allocatedHours = state.projects.reduce(
-    (s, p) =>
-      s +
-      p.players
-        .filter((pl) => !memberFilter.length || memberFilter.includes(pl.memberId))
-        .reduce((ss, pl) => ss + pl.hours, 0),
-    0,
-  )
-
-  const toggleMember = (id: string) =>
-    setMemberFilter((f) =>
-      f.includes(id) ? f.filter((x) => x !== id) : [...f, id],
+  const toggleRole = (role: Role) =>
+    setRoleFilter((f) =>
+      f.includes(role) ? f.filter((x) => x !== role) : [...f, role],
     )
+
+  // only show role pills for roles the team actually has staffed
+  const staffedRoles = useMemo(
+    () => ROLES.filter((r) => state.members.some((m) => m.role === r)),
+    [state.members],
+  )
 
   const cols = `220px repeat(${weeks.length * WEEKDAYS.length}, ${DAY_W}px)`
 
@@ -106,7 +115,6 @@ export function TeamLoadBoard() {
       <div className="kpibar">
         <Kpi label="Atividades" value={visibleActs.length} />
         <Kpi label="Carga total" value={`${totalDays}`} unit="d" />
-        <Kpi label="Horas alocadas" value={`${allocatedHours}`} unit="h" />
         <Kpi label="Sobrecargas" value={overloads} alert={overloads > 0} />
         <Kpi label="+ Carregado" value={topMember} unit={`${topDays}d`} />
       </div>
@@ -115,30 +123,17 @@ export function TeamLoadBoard() {
         <div className="search">
           <span>🔍</span>
           <input
-            placeholder="Buscar atividade, projeto ou cliente…"
+            placeholder="Buscar atividade, projeto, cliente ou pessoa…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        {state.members.map((m) => {
-          const on = memberFilter.includes(m.id)
-          return (
-            <button
-              key={m.id}
-              className={`pill ${on ? 'on' : ''}`}
-              style={on ? { background: m.color } : undefined}
-              onClick={() => toggleMember(m.id)}
-            >
-              <span className="dot" style={{ background: m.color }} />
-              {m.name.split(' ')[0]}
-            </button>
-          )
-        })}
-        {(memberFilter.length > 0 || q) && (
+        <RolePills roles={staffedRoles} selected={roleFilter} onToggle={toggleRole} />
+        {(roleFilter.length > 0 || q) && (
           <button
             className="btn sm"
             onClick={() => {
-              setMemberFilter([])
+              setRoleFilter([])
               setSearch('')
             }}
           >
@@ -189,8 +184,8 @@ export function TeamLoadBoard() {
             <Row key={p.id}>
               <button
                 className="mx-proj"
-                onClick={() => setEditingProject(p)}
-                title="Editar projeto"
+                onClick={() => setDetailProject(p)}
+                title="Ver detalhes do projeto"
               >
                 <span className="p-code">{p.code}</span>
                 <span className="p-client">{p.client}</span>
@@ -200,6 +195,10 @@ export function TeamLoadBoard() {
                   >
                     {p.type === 'NPI' ? `NPI ${p.npiSubtype ?? ''}` : 'STD / EP'}
                   </span>
+                  <RiskBadge risk={p.risk} />
+                  {(daysByProject.get(p.id) ?? 0) > 0 && (
+                    <span className="load-chip">{daysByProject.get(p.id)}d</span>
+                  )}
                 </div>
               </button>
               {weeks.map((w) =>
@@ -252,18 +251,28 @@ export function TeamLoadBoard() {
                       })}
                       <button
                         className="add-act"
-                        onClick={() =>
+                        onClick={() => {
+                          // Default to a player already staffed on this project
+                          // (preferring PM) so role/member start out consistent.
+                          const defaultPlayer =
+                            p.players.find((pl) => pl.role === 'PM') ??
+                            p.players[0]
+                          const defaultMemberId =
+                            defaultPlayer?.memberId ??
+                            state.members.find((m) => m.role === 'PM')?.id ??
+                            state.members[0]?.id ??
+                            ''
                           setEditing({
                             id: uid(),
                             projectId: p.id,
                             week: w.key,
                             day: d,
                             title: '',
-                            role: 'PM',
-                            memberId: state.members[0]?.id ?? '',
+                            role: defaultPlayer?.role ?? 'PM',
+                            memberId: defaultMemberId,
                             loadDays: 1,
                           })
-                        }
+                        }}
                       >
                         +
                       </button>
@@ -289,6 +298,16 @@ export function TeamLoadBoard() {
             setEditing(null)
           }}
           exists={state.activities.some((x) => x.id === editing.id)}
+        />
+      )}
+      {detailProject && (
+        <ProjectDetail
+          project={detailProject}
+          onClose={() => setDetailProject(null)}
+          onEdit={() => {
+            setEditingProject(detailProject)
+            setDetailProject(null)
+          }}
         />
       )}
       {editingProject && (

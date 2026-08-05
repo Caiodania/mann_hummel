@@ -118,11 +118,11 @@ button {
   margin-left: 8px;
 }
 .tab {
-  border: none;
+  border: 1px solid transparent;
   background: transparent;
   color: var(--text);
-  padding: 8px 16px;
-  border-radius: 999px;
+  padding: 7px 15px;
+  border-radius: var(--radius-sm);
   font-size: 14px;
   font-weight: 600;
 }
@@ -130,8 +130,9 @@ button {
   background: var(--bg);
 }
 .tab.active {
-  background: var(--mh-green);
-  color: #fff;
+  border-color: var(--mh-green);
+  color: var(--mh-green-d);
+  background: var(--mh-green-l);
 }
 
 .topbar-spacer {
@@ -205,6 +206,21 @@ button {
   color: var(--text-h);
   width: 100%;
 }
+
+/* A labeled cluster of filter pills, e.g. "RISCO  baixo  médio  alto" */
+.filter-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.filter-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
 .pill {
   border: 1px solid var(--border);
   background: var(--panel);
@@ -225,6 +241,7 @@ button {
 .pill.on {
   color: #fff;
   border-color: transparent;
+  box-shadow: var(--shadow-sm);
 }
 .pill.ghost {
   color: var(--text-muted);
@@ -264,6 +281,29 @@ button {
   flex: 1;
   overflow: auto;
   padding: 0 20px 24px;
+}
+
+/* ---------- Info banner (descriptive card above a board) ---------- */
+.info-banner {
+  margin: 0 20px 14px;
+  padding: 12px 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  flex: none;
+}
+.info-banner strong {
+  display: block;
+  font-size: 14px;
+  color: var(--text-h);
+  margin-bottom: 3px;
+}
+.info-banner p {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 /* ---------- Badges ---------- */
@@ -996,4 +1036,58 @@ button {
   border-radius: 5px;
   padding: 2px 6px;
   color: var(--text);
+}
+
+/* ---- sync / connection error toast ---- */
+.toast {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: min(680px, calc(100vw - 32px));
+  padding: 10px 12px 10px 14px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-pop);
+  font-size: 13px;
+  animation: toast-in 0.18s ease-out;
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+.toast-error {
+  background: var(--risk-high-bg);
+  border: 1px solid var(--risk-high);
+  color: var(--risk-high);
+}
+.toast-icon {
+  font-size: 15px;
+  line-height: 1;
+}
+.toast-msg {
+  color: var(--text-h);
+  line-height: 1.35;
+}
+.toast-close {
+  margin-left: 4px;
+  border: none;
+  background: transparent;
+  color: var(--risk-high);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 2px;
+}
+.toast-close:hover {
+  color: var(--text-h);
 }

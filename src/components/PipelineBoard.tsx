@@ -11,6 +11,7 @@ import {
 } from '../types'
 import { Avatar, Modal, RiskBadge, TypeChip, fmtMio } from './ui'
 import { ProjectModal, emptyProject } from './ProjectModal'
+import { ProjectDetail } from './ProjectDetail'
 import { weekKeyFromDate } from '../lib/weeks'
 
 const STAGE_DESC: Partial<Record<Stage, string>> = {
@@ -22,12 +23,14 @@ const STAGE_DESC: Partial<Record<Stage, string>> = {
 
 export function PipelineBoard() {
   const { state, moveStage } = useStore()
+  const [search, setSearch] = useState('')
   const [riskFilter, setRiskFilter] = useState<Risk[]>([])
   const [readingFilter, setReadingFilter] = useState<Reading[]>([])
   const [clientFilter, setClientFilter] = useState('')
   const [dragStage, setDragStage] = useState<Stage | null>(null)
 
   const [editingProject, setEditingProject] = useState<Project | null>(null)
+  const [detailProject, setDetailProject] = useState<Project | null>(null)
   const [submissionFor, setSubmissionFor] = useState<Project | null>(null)
   const [nominationFor, setNominationFor] = useState<Project | null>(null)
 
@@ -36,10 +39,13 @@ export function PipelineBoard() {
     [state.projects],
   )
 
+  const q = search.trim().toLowerCase()
   const visible = state.projects.filter((p) => {
     if (riskFilter.length && !riskFilter.includes(p.risk)) return false
     if (readingFilter.length && !readingFilter.includes(p.reading)) return false
     if (clientFilter && p.client !== clientFilter) return false
+    if (q && !p.code.toLowerCase().includes(q) && !p.client.toLowerCase().includes(q))
+      return false
     return true
   })
 
@@ -81,55 +87,73 @@ export function PipelineBoard() {
       </div>
 
       <div className="toolbar">
-        {(['baixo', 'medio', 'alto'] as Risk[]).map((r) => (
-          <button
-            key={r}
-            className={`pill ${riskFilter.includes(r) ? 'on' : ''}`}
-            style={
-              riskFilter.includes(r)
-                ? { background: `var(--risk-${r})` }
-                : undefined
-            }
-            onClick={() => toggle(riskFilter, r, setRiskFilter)}
-          >
-            <span
-              className="dot"
-              style={{ background: `var(--risk-${r})` }}
-            />
-            {r}
-          </button>
-        ))}
-        {(['clara', 'confirmar'] as Reading[]).map((r) => (
-          <button
-            key={r}
-            className={`pill ${readingFilter.includes(r) ? 'on' : 'ghost'}`}
-            style={
-              readingFilter.includes(r) ? { background: '#64748b' } : undefined
-            }
-            onClick={() => toggle(readingFilter, r, setReadingFilter)}
-          >
-            leitura: {r}
-          </button>
-        ))}
-        <select
-          className="btn"
-          value={clientFilter}
-          onChange={(e) => setClientFilter(e.target.value)}
-        >
-          <option value="">Todos os clientes</option>
-          {clients.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
+        <div className="search">
+          <span>🔍</span>
+          <input
+            placeholder="Buscar projeto ou cliente…"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+        <div className="filter-group">
+          <span className="filter-label">Risco</span>
+          {(['baixo', 'medio', 'alto'] as Risk[]).map((r) => (
+            <button
+              key={r}
+              className={`pill ${riskFilter.includes(r) ? 'on' : ''}`}
+              style={
+                riskFilter.includes(r)
+                  ? { background: `var(--risk-${r})` }
+                  : undefined
+              }
+              onClick={() => toggle(riskFilter, r, setRiskFilter)}
+            >
+              <span
+                className="dot"
+                style={{ background: `var(--risk-${r})` }}
+              />
+              {r}
+            </button>
           ))}
-        </select>
-        {(riskFilter.length || readingFilter.length || clientFilter) && (
+        </div>
+        <div className="filter-group">
+          <span className="filter-label">Leitura</span>
+          {(['clara', 'confirmar'] as Reading[]).map((r) => (
+            <button
+              key={r}
+              className={`pill ${readingFilter.includes(r) ? 'on' : 'ghost'}`}
+              style={
+                readingFilter.includes(r) ? { background: '#64748b' } : undefined
+              }
+              onClick={() => toggle(readingFilter, r, setReadingFilter)}
+            >
+              {r}
+            </button>
+          ))}
+        </div>
+        <div className="filter-group">
+          <span className="filter-label">Cliente</span>
+          <select
+            className="btn"
+            value={clientFilter}
+            onChange={(e) => setClientFilter(e.target.value)}
+          >
+            <option value="">Todos</option>
+            {clients.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+        </div>
+        {(riskFilter.length || readingFilter.length || clientFilter || search) && (
           <button
             className="btn sm"
             onClick={() => {
               setRiskFilter([])
               setReadingFilter([])
               setClientFilter('')
+              setSearch('')
             }}
           >
             Limpar filtros
@@ -175,7 +199,7 @@ export function PipelineBoard() {
                   <PipelineCard
                     key={p.id}
                     project={p}
-                    onOpen={() => setEditingProject(p)}
+                    onOpen={() => setDetailProject(p)}
                     onAddSubmission={() => setSubmissionFor(p)}
                     onEditNomination={() => setNominationFor(p)}
                   />
@@ -191,6 +215,16 @@ export function PipelineBoard() {
         })}
       </div>
 
+      {detailProject && (
+        <ProjectDetail
+          project={detailProject}
+          onClose={() => setDetailProject(null)}
+          onEdit={() => {
+            setEditingProject(detailProject)
+            setDetailProject(null)
+          }}
+        />
+      )}
       {editingProject && (
         <ProjectModal
           project={editingProject}

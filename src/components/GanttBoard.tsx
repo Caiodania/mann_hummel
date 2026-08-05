@@ -9,9 +9,10 @@ import {
 import { useStore } from '../store'
 import { useWeekRail } from '../lib/useWeekRail'
 import { addWeeks, weekKeyFromDate, weeksBetween } from '../lib/weeks'
-import type { Project } from '../types'
-import { Avatar, Modal, RiskBadge, TypeChip, fmtMio } from './ui'
+import { STAGE_WEIGHT, type Project, type Reading, type Risk } from '../types'
+import { RiskBadge, TypeChip, fmtMio } from './ui'
 import { ProjectModal, emptyProject } from './ProjectModal'
+import { ProjectDetail } from './ProjectDetail'
 
 const CELL = 54 // px per week column
 const PROJ_COL = 220
@@ -27,11 +28,49 @@ interface DragState {
 
 export function GanttBoard() {
   const { state, setProjectSpan } = useStore()
-  // Gantt shows only projects currently in the Nomination stage.
-  const projects = useMemo(
-    () => state.projects.filter((p) => p.stage === 'Nomination'),
+  const [search, setSearch] = useState('')
+  const [riskFilter, setRiskFilter] = useState<Risk[]>([])
+  const [readingFilter, setReadingFilter] = useState<Reading[]>([])
+  const [clientFilter, setClientFilter] = useState('')
+
+  const clients = useMemo(
+    () => [...new Set(state.projects.map((p) => p.client))].sort(),
     [state.projects],
   )
+
+  // Gantt shows only projects currently in the Nomination stage, further
+  // narrowed by the toolbar filters.
+  const q = search.trim().toLowerCase()
+  const projects = useMemo(
+    () =>
+      state.projects.filter((p) => {
+        if (p.stage !== 'Nomination') return false
+        if (riskFilter.length && !riskFilter.includes(p.risk)) return false
+        if (readingFilter.length && !readingFilter.includes(p.reading))
+          return false
+        if (clientFilter && p.client !== clientFilter) return false
+        if (
+          q &&
+          !p.code.toLowerCase().includes(q) &&
+          !p.client.toLowerCase().includes(q)
+        )
+          return false
+        return true
+      }),
+    [state.projects, riskFilter, readingFilter, clientFilter, q],
+  )
+
+  // Same formulas as the Pipeline KPI bar, scoped to this tab's own project
+  // set (Nomination stage + active filters) so the two tabs read consistently.
+  const gross = projects.reduce((s, p) => s + p.valueMio, 0)
+  const atRisk = projects
+    .filter((p) => p.risk === 'alto')
+    .reduce((s, p) => s + p.valueMio, 0)
+  const master = projects.reduce(
+    (s, p) => s + p.valueMio * STAGE_WEIGHT[p.stage],
+    0,
+  )
+
   const coverKeys = useMemo(() => {
     const keys: string[] = []
     for (const p of projects) {
@@ -94,6 +133,9 @@ export function GanttBoard() {
 
   const cols = `${PROJ_COL}px repeat(${weeks.length}, ${CELL}px)`
 
+  const toggle = <T,>(arr: T[], v: T, set: (a: T[]) => void) =>
+    set(arr.includes(v) ? arr.filter((x) => x !== v) : [...arr, v])
+
   const spanOf = (p: Project) =>
     preview[p.id] ?? { startWeek: p.startWeek, endWeek: p.endWeek }
 
@@ -115,22 +157,82 @@ export function GanttBoard() {
   return (
     <>
       <div className="kpibar">
-        <Kpi label="Projetos (Nomination)" value={projects.length} />
-        <Kpi
-          label="Em produção (SOP def.)"
-          value={projects.filter((p) => p.nomination?.sopDate).length}
-        />
-        <Kpi
-          label="Carteira"
-          value={fmtMio(projects.reduce((s, p) => s + p.valueMio, 0))}
-        />
+        <Kpi label="Métrica master" value={fmtMio(master)} />
+        <Kpi label="Carteira bruta" value={fmtMio(gross)} />
+        <Kpi label="Valor em risco" value={fmtMio(atRisk)} alert={atRisk > 0} />
+        <Kpi label="Projetos" value={projects.length} />
       </div>
 
       <div className="toolbar">
-        <span style={{ color: 'var(--text-muted)', fontSize: 13 }}>
-          Exibindo apenas projetos em <b>Nomination</b> · arraste as barras para
-          mover · alças laterais para redimensionar · clique para ver detalhes
-        </span>
+        <div className="search">
+          <span>🔍</span>
+          <input
+            placeholder="Buscar projeto ou cliente…"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+        <div className="filter-group">
+          <span className="filter-label">Risco</span>
+          {(['baixo', 'medio', 'alto'] as Risk[]).map((r) => (
+            <button
+              key={r}
+              className={`pill ${riskFilter.includes(r) ? 'on' : ''}`}
+              style={
+                riskFilter.includes(r)
+                  ? { background: `var(--risk-${r})` }
+                  : undefined
+              }
+              onClick={() => toggle(riskFilter, r, setRiskFilter)}
+            >
+              <span className="dot" style={{ background: `var(--risk-${r})` }} />
+              {r}
+            </button>
+          ))}
+        </div>
+        <div className="filter-group">
+          <span className="filter-label">Leitura</span>
+          {(['clara', 'confirmar'] as Reading[]).map((r) => (
+            <button
+              key={r}
+              className={`pill ${readingFilter.includes(r) ? 'on' : 'ghost'}`}
+              style={
+                readingFilter.includes(r) ? { background: '#64748b' } : undefined
+              }
+              onClick={() => toggle(readingFilter, r, setReadingFilter)}
+            >
+              {r}
+            </button>
+          ))}
+        </div>
+        <div className="filter-group">
+          <span className="filter-label">Cliente</span>
+          <select
+            className="btn"
+            value={clientFilter}
+            onChange={(e) => setClientFilter(e.target.value)}
+          >
+            <option value="">Todos</option>
+            {clients.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+        </div>
+        {(riskFilter.length || readingFilter.length || clientFilter || search) && (
+          <button
+            className="btn sm"
+            onClick={() => {
+              setRiskFilter([])
+              setReadingFilter([])
+              setClientFilter('')
+              setSearch('')
+            }}
+          >
+            Limpar filtros
+          </button>
+        )}
         <div className="topbar-spacer" />
         <button
           className="btn primary"
@@ -138,6 +240,15 @@ export function GanttBoard() {
         >
           + Novo projeto
         </button>
+      </div>
+
+      <div className="info-banner">
+        <strong>Cronograma por projeto</strong>
+        <p>
+          Exibindo apenas projetos na etapa <b>Nomination</b>. Arraste as
+          barras para mover, use as alças laterais para redimensionar, clique
+          para ver detalhes. Linha verde = hoje.
+        </p>
       </div>
 
       <div className="gantt-wrap" onScroll={onScroll}>
@@ -222,7 +333,14 @@ export function GanttBoard() {
       </div>
 
       {detail && (
-        <ProjectDetail project={detail} onClose={() => setDetail(null)} />
+        <ProjectDetail
+          project={detail}
+          onClose={() => setDetail(null)}
+          onEdit={() => {
+            setEditing(detail)
+            setDetail(null)
+          }}
+        />
       )}
       {editing && (
         <ProjectModal project={editing} onClose={() => setEditing(null)} />
@@ -235,73 +353,20 @@ function GanttRow({ children }: { children: ReactNode }) {
   return <>{children}</>
 }
 
-function Kpi({ label, value }: { label: string; value: string | number }) {
+function Kpi({
+  label,
+  value,
+  alert,
+}: {
+  label: string
+  value: string | number
+  alert?: boolean
+}) {
   return (
-    <div className="kpi">
+    <div className={`kpi ${alert ? 'alert' : ''}`}>
       <div className="label">{label}</div>
       <div className="value">{value}</div>
     </div>
   )
 }
 
-function ProjectDetail({
-  project,
-  onClose,
-}: {
-  project: Project
-  onClose: () => void
-}) {
-  const { state } = useStore()
-  const memberById = useMemo(
-    () => new Map(state.members.map((m) => [m.id, m])),
-    [state.members],
-  )
-  const acts = state.activities.filter((a) => a.projectId === project.id)
-
-  return (
-    <Modal title={`${project.code} — ${project.client}`} onClose={onClose} wide>
-      <div className="p-meta" style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
-        <TypeChip project={project} />
-        <RiskBadge risk={project.risk} />
-        <span className="load-chip">{fmtMio(project.valueMio)}</span>
-        {project.nomination && (
-          <span className="load-chip">
-            KO {project.nomination.koDate} · SOP {project.nomination.sopDate}
-          </span>
-        )}
-      </div>
-
-      <div className="detail-grid">
-        {project.players.length === 0 && (
-          <div className="empty" style={{ padding: 16 }}>
-            Nenhum player cadastrado neste projeto.
-          </div>
-        )}
-        {project.players.map((pl) => {
-          const m = memberById.get(pl.memberId)
-          const memberActs = acts.filter((a) => a.memberId === pl.memberId)
-          return (
-            <div key={pl.memberId} className="player-row">
-              <Avatar member={m} />
-              <div>
-                <div className="p-name">{m?.name ?? '—'}</div>
-                <div className="player-acts">
-                  {memberActs.length === 0 && (
-                    <span className="mini-act">sem atividades lançadas</span>
-                  )}
-                  {memberActs.map((a) => (
-                    <span key={a.id} className="mini-act">
-                      {a.title} · {a.loadDays}d
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <span className={`badge role-${pl.role}`}>{pl.role}</span>
-              <span className="p-hours">{pl.hours}h</span>
-            </div>
-          )
-        })}
-      </div>
-    </Modal>
-  )
-}

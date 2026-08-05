@@ -1,6 +1,15 @@
-// Seeds the database with REAL data extracted from the MANN+HUMMEL workbook
-// (Workload_Rev19 → NPI_Development tab). See seed-data.json.
-// Fields absent from the workbook (valueMio, risk) come in as 0 / placeholder.
+// Seeds the database with REAL data. Project identity (code, client, name,
+// dates, npiSubtype) comes from the MANN+HUMMEL workbook (Workload_Rev19 →
+// NPI_Development tab). Members, players and activities are reconciled
+// against the real per-task workload catalog in prisma/source/ ("STD load_xSEP8.xlsx"
+// = master 3-phase/313-task process + role headcount; "STD load_NPI & EWF.xlsx"
+// = the 5 TYPE G/H/I/P/X task lists): every project's activities are the
+// catalog tasks for its npiSubtype, with the real responsible role and
+// loadDays = hours/8, spread across the project's startWeek..endWeek. See
+// prisma/source/catalog.json for the parsed catalog and seed-data.json for
+// the generated result. Fields absent from both sources (valueMio, risk)
+// come in as 0 / placeholder.
+import '../src/env.js' // load DATABASE_URL before Prisma (tsx runs this directly)
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'

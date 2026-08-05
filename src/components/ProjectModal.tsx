@@ -55,7 +55,14 @@ export function ProjectModal({
       ...x,
       players: [
         ...x.players,
-        { memberId: state.members[0]?.id ?? '', role: 'PM', hours: 8 },
+        {
+          memberId:
+            state.members.find((m) => m.role === 'PM')?.id ??
+            state.members[0]?.id ??
+            '',
+          role: 'PM',
+          hours: 8,
+        },
       ],
     }))
   const removePlayer = (i: number) =>

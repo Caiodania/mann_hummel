@@ -17,7 +17,12 @@ import type {
 } from './types'
 import { api } from './api'
 
+// Client-generated id for optimistic creates (a Project/Activity needs an id
+// before the server round-trip). Prefer crypto.randomUUID() to make collisions
+// effectively impossible; fall back to the timestamp+random scheme on older
+// browsers / non-secure contexts.
 export const uid = () =>
+  globalThis.crypto?.randomUUID?.() ??
   `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`
 
 const EMPTY: AppState = { members: [], projects: [], activities: [] }
@@ -34,9 +39,19 @@ interface Store {
   setNomination: (projectId: string, nom: Nomination) => void
   upsertActivity: (a: Activity) => void
   deleteActivity: (id: string) => void
-  moveActivity: (id: string, week: string, projectId: string, day?: Activity['day']) => void
+  // `day` accepts a weekday (set it), null (clear it → whole-week), or
+  // undefined (leave it untouched).
+  moveActivity: (
+    id: string,
+    week: string,
+    projectId: string,
+    day?: Activity['day'] | null,
+  ) => void
   setProjectSpan: (id: string, startWeek: string, endWeek: string) => void
   reset: () => void
+  /** Last sync/connection error shown to the user, or null. */
+  syncError: string | null
+  clearError: () => void
 }
 
 const StoreCtx = createContext<Store | null>(null)
@@ -44,6 +59,7 @@ const StoreCtx = createContext<Store | null>(null)
 export function StoreProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<AppState>(EMPTY)
   const [loaded, setLoaded] = useState(false)
+  const [syncError, setSyncError] = useState<string | null>(null)
   const inFlight = useRef(0)
 
   // initial load — retry silently to ride out a cold dev-proxy / backend boot
@@ -57,13 +73,19 @@ export function StoreProvider({ children }: { children: ReactNode }) {
           if (!cancelled) {
             setState(s)
             setLoaded(true)
+            setSyncError(null)
           }
           return
         } catch {
           await new Promise((r) => setTimeout(r, 800))
         }
       }
-      if (!cancelled) setLoaded(true) // give up gracefully; polling continues
+      if (!cancelled) {
+        setLoaded(true) // give up gracefully; polling continues
+        setSyncError(
+          'Não foi possível carregar os dados do servidor. Verifique se a API está no ar.',
+        )
+      }
     }
     load()
     return () => {
@@ -75,7 +97,15 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const tick = () => {
       if (inFlight.current > 0 || document.hidden) return
-      api.getState().then(setState).catch(() => {})
+      api
+        .getState()
+        .then((s) => {
+          setState(s)
+          setSyncError(null) // recovered
+        })
+        .catch(() =>
+          setSyncError('Sem conexão com o servidor. Tentando novamente…'),
+        )
     }
     const id = setInterval(tick, 8000)
     window.addEventListener('focus', tick)
@@ -91,9 +121,16 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       setState((s) => fn(s))
     const sync = (p: Promise<AppState>) => {
       inFlight.current++
-      p.then((s) => setState(s))
+      p.then((s) => {
+        setState(s)
+        setSyncError(null)
+      })
         .catch((e) => {
           console.error(e)
+          setSyncError(
+            'Falha ao salvar a alteração no servidor. Suas mudanças podem não ter sido persistidas.',
+          )
+          // reconcile with authoritative state (rolls back the optimistic update)
           api.getState().then(setState).catch(() => {})
         })
         .finally(() => {
@@ -178,7 +215,15 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         optimistic((s) => ({
           ...s,
           activities: s.activities.map((a) =>
-            a.id === id ? { ...a, week, projectId, ...(day ? { day } : {}) } : a,
+            a.id === id
+              ? {
+                  ...a,
+                  week,
+                  projectId,
+                  // undefined → keep existing day; null/weekday → apply it
+                  ...(day === undefined ? {} : { day: day ?? undefined }),
+                }
+              : a,
           ),
         }))
         sync(api.moveActivity(id, { week, projectId, day }))
@@ -190,8 +235,10 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       reset: () => {
         api.getState().then(setState).catch(() => {})
       },
+      syncError,
+      clearError: () => setSyncError(null),
     }
-  }, [state, loaded])
+  }, [state, loaded, syncError])
 
   return <StoreCtx.Provider value={store}>{children}</StoreCtx.Provider>
 }

@@ -1,0 +1,4642 @@
+{
+  "master": {
+    "resources": {
+      "PC": 1.0,
+      "PLP": 1.0,
+      "PCM": 2.0,
+      "PMP": 2.0,
+      "PQE": 1.0,
+      "SQD": 1.0,
+      "CAD": 2.0,
+      "LPE": "6+2",
+      "PPE": 4.0,
+      "LAB": 3.0,
+      "KAM": 7.0,
+      "PM": "2+1"
+    },
+    "tasks": [
+      {
+        "seq": 1,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "",
+        "title": "10 Request for Quote",
+        "role": "KAM",
+        "hours": 24.0
+      },
+      {
+        "seq": 2,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "",
+        "title": "20 Contract Review",
+        "role": "KAM",
+        "hours": 24.0
+      },
+      {
+        "seq": 3,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "30 Design Concept",
+        "title": "Create Internal Order to track R&D cost",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 4,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "30 Design Concept",
+        "title": "Create R&D cost estimate",
+        "role": "LPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 5,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "30 Design Concept",
+        "title": "Create 3D Models",
+        "role": "CAD",
+        "hours": 48.0
+      },
+      {
+        "seq": 6,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "30 Design Concept",
+        "title": "Create BOM",
+        "role": "LPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 7,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "30 Design Concept",
+        "title": "Create DSR",
+        "role": "LPE",
+        "hours": 6.0
+      },
+      {
+        "seq": 8,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "30 Design Concept",
+        "title": "Create Initial Drawings",
+        "role": "CAD",
+        "hours": 96.0
+      },
+      {
+        "seq": 9,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "30 Design Concept",
+        "title": "Create DCR",
+        "role": "LPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 10,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "30 Design Concept",
+        "title": "Design Concept Freeze",
+        "role": "CAD",
+        "hours": 40.0
+      },
+      {
+        "seq": 11,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Create PCR",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 12,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Create Technical Offer Presentation",
+        "role": "LPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 13,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Create Volume Scenarios",
+        "role": "KAM",
+        "hours": 2.0
+      },
+      {
+        "seq": 14,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Make or Buy decision",
+        "role": "PPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 15,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Estimation of purchased components",
+        "role": "PMP",
+        "hours": 24.0
+      },
+      {
+        "seq": 16,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Define Tooling Cost for Molds and Assembly Machines",
+        "role": "PPE",
+        "hours": 80.0
+      },
+      {
+        "seq": 17,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Define Directed Parts from the Customer",
+        "role": "KAM",
+        "hours": 2.0
+      },
+      {
+        "seq": 18,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Technical confirmation of in-house carryover components",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 19,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Technical confirmation of in-house carryover components",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 20,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Technical confirmation of purchased carryover components",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 21,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Create Process Flow Diagram",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 22,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Review Capacity and create initial investment estimate",
+        "role": "PPE",
+        "hours": 12.0
+      },
+      {
+        "seq": 23,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Define Packaging Concept",
+        "role": "PLP",
+        "hours": 20.0
+      },
+      {
+        "seq": 24,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Define Quality Control Means",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 25,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Calculate Product Standard Cost",
+        "role": "PC",
+        "hours": 2.0
+      },
+      {
+        "seq": 26,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Create PER(s)",
+        "role": "PC",
+        "hours": 32.0
+      },
+      {
+        "seq": 27,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "PER approval Workflow",
+        "role": "PC",
+        "hours": 2.0
+      },
+      {
+        "seq": 28,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Risk Analysis",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 29,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Feasibility Approval",
+        "role": "PMP",
+        "hours": 2.0
+      },
+      {
+        "seq": 30,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "40 Quotation Preparation",
+        "title": "Project Timeline Creation",
+        "role": "PMP",
+        "hours": 2.0
+      },
+      {
+        "seq": 31,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "50 (MS) Submit Quotation",
+        "title": "Create Quote Letter",
+        "role": "KAM",
+        "hours": 16.0
+      },
+      {
+        "seq": 32,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "50 (MS) Submit Quotation",
+        "title": "Quote approval",
+        "role": "KAM",
+        "hours": 2.0
+      },
+      {
+        "seq": 33,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "",
+        "title": "60 Quotation Review with Customer and refinement",
+        "role": "KAM",
+        "hours": 80.0
+      },
+      {
+        "seq": 34,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "",
+        "title": "70 (MS) Nomination",
+        "role": "KAM",
+        "hours": 2.0
+      },
+      {
+        "seq": 35,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "",
+        "title": "80 (MS) Project Kick Off",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 36,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Process Plan MP /Process Layout (PMC evaluation)",
+        "role": "PPE",
+        "hours": 20.0
+      },
+      {
+        "seq": 37,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Production Process Concept (PMC evaluation)",
+        "role": "PPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 38,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Production Standard Overview /Planning (PMC evaluation)",
+        "role": "PPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 39,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Planning, Preparation and Scoping of the P-FMEA (PMC evaluation)",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 40,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Packaging, Transportation, Logististics Concept, Supply Chain Checklist (PMC evaluation)",
+        "role": "PLP",
+        "hours": 16.0
+      },
+      {
+        "seq": 41,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Risk Assessment for Purchased Parts (PMC evaluation)",
+        "role": "PMP",
+        "hours": 2.0
+      },
+      {
+        "seq": 42,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "pBOM updated and in line with PER (PMC evaluation)",
+        "role": "PMP",
+        "hours": 16.0
+      },
+      {
+        "seq": 43,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Carry-over Parts Check (Capacity & Tool Confirmation) (PMC evaluation)",
+        "role": "PMP",
+        "hours": 2.0
+      },
+      {
+        "seq": 44,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Kick-off Meeting after project nomination (PMC evaluation)",
+        "role": "PMP",
+        "hours": 2.0
+      },
+      {
+        "seq": 45,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Panel Sourcing List / PreRFQ (PMC evaluation)",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 46,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Sourcing Pipeline Planning (PMC evaluation)",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 47,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Planning, Preparation and Scoping of the D-FMEA (PMC evaluation)",
+        "role": "LPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 48,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "DSR (Spec./Product Assurance Plan)/ DVP (PMC evaluation)",
+        "role": "LPE",
+        "hours": 32.0
+      },
+      {
+        "seq": 49,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "BOM, 3 D Model, Drawings (PMC evaluation)",
+        "role": "LPE",
+        "hours": 12.0
+      },
+      {
+        "seq": 50,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "aPriori (cost evaluation based on CAD data) (PMC evaluation)",
+        "role": "CAD",
+        "hours": 40.0
+      },
+      {
+        "seq": 51,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Quality Planning Concept (PMC evaluation)",
+        "role": "PQE",
+        "hours": 20.0
+      },
+      {
+        "seq": 52,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Cost calculation incl. PER approval (PMC evaluation)",
+        "role": "PC",
+        "hours": 2.0
+      },
+      {
+        "seq": 53,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Target Costing (PMC evaluation)",
+        "role": "PC",
+        "hours": 2.0
+      },
+      {
+        "seq": 54,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Value Analysis/Value Engineering (PMC evaluation)",
+        "role": "PC",
+        "hours": 8.0
+      },
+      {
+        "seq": 55,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "PCR (PMC evaluation)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 56,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Feasibility Confirmation (PMC evaluation)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 57,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "DLS Pre RFQ Report Out (PMC evaluation)",
+        "role": "PM",
+        "hours": 16.0
+      },
+      {
+        "seq": 58,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "DLS Offer Report Out (PMC evaluation)",
+        "role": "PM",
+        "hours": 16.0
+      },
+      {
+        "seq": 59,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Timing Plan (PMC evaluation)",
+        "role": "PM",
+        "hours": 40.0
+      },
+      {
+        "seq": 60,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Risk analysis (PMC evaluation)",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 61,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Kick-off/ Project Planning (PMC evaluation)",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 62,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Project Status Report (final PMC evaluation)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 63,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Contract Compliance Sheet (PMC evaluation)",
+        "role": "KAM",
+        "hours": 16.0
+      },
+      {
+        "seq": 64,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Quotation incl. Approval (PMC evaluation)",
+        "role": "KAM",
+        "hours": 2.0
+      },
+      {
+        "seq": 65,
+        "phase": "10 1. Quotation and Planning",
+        "stepPath": "90 Gate 1 - Nomination and Planning Approval",
+        "title": "Customer Nomination (PMC evaluation)",
+        "role": "KAM",
+        "hours": 2.0
+      },
+      {
+        "seq": 66,
+        "phase": "20 2. Development",
+        "stepPath": "20 Design Concept (BOM/3D/drawings) incl. CAE / blank / blank",
+        "title": "Update RnD relevant documents",
+        "role": "LPE",
+        "hours": 32.0
+      },
+      {
+        "seq": 66,
+        "phase": "20 2. Development",
+        "stepPath": "20 Design Concept (BOM/3D/drawings) incl. CAE / blank / blank",
+        "title": "Update RnD relevant documents",
+        "role": "LAB",
+        "hours": 32.0
+      },
+      {
+        "seq": 67,
+        "phase": "20 2. Development",
+        "stepPath": "20 Design Concept (BOM/3D/drawings) incl. CAE / blank / blank",
+        "title": "Re-check specification for carryover parts",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 68,
+        "phase": "20 2. Development",
+        "stepPath": "20 Design Concept (BOM/3D/drawings) incl. CAE / blank / blank",
+        "title": "Capex Initiation",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 69,
+        "phase": "20 2. Development",
+        "stepPath": "30 Design Freeze - Prototype / blank / blank",
+        "title": "3D Models released",
+        "role": "CAD",
+        "hours": 212.0
+      },
+      {
+        "seq": 70,
+        "phase": "20 2. Development",
+        "stepPath": "blank / blank",
+        "title": "40 Prototype Order reception",
+        "role": "KAM",
+        "hours": 4.0
+      },
+      {
+        "seq": 71,
+        "phase": "20 2. Development",
+        "stepPath": "blank / blank",
+        "title": "50 Sourcing process for purchase parts (Prototypes)",
+        "role": "PMP",
+        "hours": 4.0
+      },
+      {
+        "seq": 72,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "Packaging, Transport, Logistics Concept, Supply Chain Checklist (CP evaluation)",
+        "role": "PLP",
+        "hours": 16.0
+      },
+      {
+        "seq": 73,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "(update) Risk Assessment for Purchase Parts (CP evaluation)",
+        "role": "PMP",
+        "hours": 2.0
+      },
+      {
+        "seq": 74,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "(update) pBOM (CP evaluation)",
+        "role": "PMP",
+        "hours": 4.0
+      },
+      {
+        "seq": 75,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "sourcing process critical or early tooling kick-off tooling & PP (CP evaluation)",
+        "role": "PMP",
+        "hours": 40.0
+      },
+      {
+        "seq": 76,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "Concept freeze with customer (CP evaluation)",
+        "role": "LPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 77,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "Feedback A-Prototype Customer Validation (CP evaluation)",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 78,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "Test Report A-Prototypes (CP evaluation)",
+        "role": "LPE",
+        "hours": 32.0
+      },
+      {
+        "seq": 79,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "Design Review A-Prototypes (CP evaluation)",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 80,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "(update) DSR (Spec./Product Ass urance Plan)/ DVP (CP evaluation)",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 81,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "A-/B- Prototype Manufacturing Plan (CP evaluation)",
+        "role": "LPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 82,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "2D drawing agreement with customer (CP evaluation)",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 83,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "RFQ Requirements for Nomination of tool suppliers and/ or Long Leadtime PU Parts (CP evaluation)",
+        "role": "LPE",
+        "hours": 12.0
+      },
+      {
+        "seq": 84,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "(update) BOM, 3D data, drawings (CP evaluation)",
+        "role": "LPE",
+        "hours": 10.0
+      },
+      {
+        "seq": 85,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "(update) D-FMEA documentation (CP evaluation)",
+        "role": "LPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 86,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "aPriori (cost evaluation based on CAD data) (PMC evaluation)",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 87,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "Control Plan A-/B-Prototypes (CP evaluation)",
+        "role": "PQE",
+        "hours": 6.0
+      },
+      {
+        "seq": 88,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "A-Prototype Inspection Report (CP evaluation)",
+        "role": "PQE",
+        "hours": 6.0
+      },
+      {
+        "seq": 89,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "A-Prototype Part Release (CP evaluation)",
+        "role": "PQE",
+        "hours": 6.0
+      },
+      {
+        "seq": 90,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "PCR (CR evaluation)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 91,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "(update) Feasibility Confirmation (CP evaluation)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 92,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "(update) Timing Plan (CP evaluation)",
+        "role": "PM",
+        "hours": 40.0
+      },
+      {
+        "seq": 93,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "(update) Risk Analysis (CP evaluation)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 94,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "Design Freeze Prototypes (CP evaluation)",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 95,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "Project Status Report (CP evaluation)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 96,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "DLS Design Report out",
+        "role": "PM",
+        "hours": 116.0
+      },
+      {
+        "seq": 97,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "A-/B-Prototype customer specification (CP evaluation)",
+        "role": "KAM",
+        "hours": 2.0
+      },
+      {
+        "seq": 98,
+        "phase": "20 2. Development",
+        "stepPath": "60 (CP) Prototype Kick-off / blank / blank",
+        "title": "Customer order A-/B-prototypes (CP evaluation)",
+        "role": "KAM",
+        "hours": 2.0
+      },
+      {
+        "seq": 99,
+        "phase": "20 2. Development",
+        "stepPath": "blank / blank",
+        "title": "70 Manufacture Prototype Tool build",
+        "role": "LPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 100,
+        "phase": "20 2. Development",
+        "stepPath": "blank / blank",
+        "title": "80 Prototype Manufacturing",
+        "role": "LPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 101,
+        "phase": "20 2. Development",
+        "stepPath": "blank / blank",
+        "title": "90 Prototype dimensional check",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 102,
+        "phase": "20 2. Development",
+        "stepPath": "blank / blank",
+        "title": "100 (MS) Prototype availability at customer",
+        "role": "PLP",
+        "hours": 16.0
+      },
+      {
+        "seq": 103,
+        "phase": "20 2. Development",
+        "stepPath": "110 Prototype Validation (DVP) / blank / blank",
+        "title": "Part Approval for Testing",
+        "role": "LPE",
+        "hours": 1.0
+      },
+      {
+        "seq": 103,
+        "phase": "20 2. Development",
+        "stepPath": "110 Prototype Validation (DVP) / blank / blank",
+        "title": "Part Approval for Testing",
+        "role": "LAB",
+        "hours": 40.0
+      },
+      {
+        "seq": 104,
+        "phase": "20 2. Development",
+        "stepPath": "110 Prototype Validation (DVP) / blank / blank",
+        "title": "Testing completed",
+        "role": "LPE",
+        "hours": 1.0
+      },
+      {
+        "seq": 104,
+        "phase": "20 2. Development",
+        "stepPath": "110 Prototype Validation (DVP) / blank / blank",
+        "title": "Testing completed",
+        "role": "LAB",
+        "hours": 8.0
+      },
+      {
+        "seq": 105,
+        "phase": "20 2. Development",
+        "stepPath": "110 Prototype Validation (DVP) / blank / blank",
+        "title": "Testing Report",
+        "role": "LPE",
+        "hours": 50.0
+      },
+      {
+        "seq": 106,
+        "phase": "20 2. Development",
+        "stepPath": "110 Prototype Validation (DVP) / blank / blank",
+        "title": "Customer approval of Testing Report",
+        "role": "LPE",
+        "hours": 5.0
+      },
+      {
+        "seq": 107,
+        "phase": "20 2. Development",
+        "stepPath": "110 Prototype Validation (DVP) / blank / blank",
+        "title": "Design Review",
+        "role": "LPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 108,
+        "phase": "30 3. Industrialization",
+        "stepPath": "blank / blank",
+        "title": "10 Industrialization preparation",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 109,
+        "phase": "30 3. Industrialization",
+        "stepPath": "20 Update Design for Mass Production / blank / blank",
+        "title": "Re-check specification for carryover parts",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 110,
+        "phase": "30 3. Industrialization",
+        "stepPath": "20 Update Design for Mass Production / blank / blank",
+        "title": "Final decision for Make or Buy",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 111,
+        "phase": "30 3. Industrialization",
+        "stepPath": "20 Update Design for Mass Production / blank / blank",
+        "title": "Update R+D relevant documents",
+        "role": "LPE",
+        "hours": 5.0
+      },
+      {
+        "seq": 112,
+        "phase": "30 3. Industrialization",
+        "stepPath": "30 Design Freeze Agreement / blank / blank",
+        "title": "3D Models and drawings released",
+        "role": "LPE",
+        "hours": 36.0
+      },
+      {
+        "seq": 113,
+        "phase": "30 3. Industrialization",
+        "stepPath": "blank / blank",
+        "title": "40 Customer Purchase Orders",
+        "role": "KAM",
+        "hours": 2.0
+      },
+      {
+        "seq": 114,
+        "phase": "30 3. Industrialization",
+        "stepPath": "50 Tooling Sourcing for inhouse production parts / blank / blank",
+        "title": "Drawing Released for Component",
+        "role": "CAD",
+        "hours": 48.0
+      },
+      {
+        "seq": 115,
+        "phase": "30 3. Industrialization",
+        "stepPath": "50 Tooling Sourcing for inhouse production parts / blank / blank",
+        "title": "Tooling SOW",
+        "role": "PPE",
+        "hours": 120.0
+      },
+      {
+        "seq": 116,
+        "phase": "30 3. Industrialization",
+        "stepPath": "50 Tooling Sourcing for inhouse production parts / blank / blank",
+        "title": "3 Supplier Quotations",
+        "role": "PMP",
+        "hours": 24.0
+      },
+      {
+        "seq": 117,
+        "phase": "30 3. Industrialization",
+        "stepPath": "50 Tooling Sourcing for inhouse production parts / blank / blank",
+        "title": "Sourcing Decision Sheet",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 118,
+        "phase": "30 3. Industrialization",
+        "stepPath": "50 Tooling Sourcing for inhouse production parts / blank / blank",
+        "title": "Sourcing Board Approval",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 119,
+        "phase": "30 3. Industrialization",
+        "stepPath": "60 Parts Sourcing / blank / blank",
+        "title": "Drawing Released for Component",
+        "role": "CAD",
+        "hours": 48.0
+      },
+      {
+        "seq": 120,
+        "phase": "30 3. Industrialization",
+        "stepPath": "60 Parts Sourcing / blank / blank",
+        "title": "PRFPP signed by supplier",
+        "role": "PMP",
+        "hours": 24.0
+      },
+      {
+        "seq": 121,
+        "phase": "30 3. Industrialization",
+        "stepPath": "60 Parts Sourcing / blank / blank",
+        "title": "3 Supplier Quotations",
+        "role": "PMP",
+        "hours": 24.0
+      },
+      {
+        "seq": 122,
+        "phase": "30 3. Industrialization",
+        "stepPath": "60 Parts Sourcing / blank / blank",
+        "title": "Sourcing Decision Sheet",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 123,
+        "phase": "30 3. Industrialization",
+        "stepPath": "60 Parts Sourcing / blank / blank",
+        "title": "Sourcing Board Approval",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 124,
+        "phase": "30 3. Industrialization",
+        "stepPath": "70 Investment & Equipment Sourcing / blank / blank",
+        "title": "Drawing Released for Assembly",
+        "role": "CAD",
+        "hours": 48.0
+      },
+      {
+        "seq": 125,
+        "phase": "30 3. Industrialization",
+        "stepPath": "70 Investment & Equipment Sourcing / blank / blank",
+        "title": "Equipment SOW",
+        "role": "PPE",
+        "hours": 120.0
+      },
+      {
+        "seq": 126,
+        "phase": "30 3. Industrialization",
+        "stepPath": "70 Investment & Equipment Sourcing / blank / blank",
+        "title": "3 Supplier Quotations",
+        "role": "PMP",
+        "hours": 24.0
+      },
+      {
+        "seq": 127,
+        "phase": "30 3. Industrialization",
+        "stepPath": "70 Investment & Equipment Sourcing / blank / blank",
+        "title": "CAPEX Preparation",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 128,
+        "phase": "30 3. Industrialization",
+        "stepPath": "70 Investment & Equipment Sourcing / blank / blank",
+        "title": "Sourcing Decision Sheet",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 129,
+        "phase": "30 3. Industrialization",
+        "stepPath": "70 Investment & Equipment Sourcing / blank / blank",
+        "title": "CAPEX Approval",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 130,
+        "phase": "30 3. Industrialization",
+        "stepPath": "70 Investment & Equipment Sourcing / blank / blank",
+        "title": "Sourcing Board Approval",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 131,
+        "phase": "30 3. Industrialization",
+        "stepPath": "80 Early Tooling Kickoff / blank / blank",
+        "title": "Internal Part Design Freeze",
+        "role": "LPE",
+        "hours": 6.0
+      },
+      {
+        "seq": 132,
+        "phase": "30 3. Industrialization",
+        "stepPath": "80 Early Tooling Kickoff / blank / blank",
+        "title": "Team Feasibility",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 133,
+        "phase": "30 3. Industrialization",
+        "stepPath": "80 Early Tooling Kickoff / blank / blank",
+        "title": "PRFPP",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 134,
+        "phase": "30 3. Industrialization",
+        "stepPath": "80 Early Tooling Kickoff / blank / blank",
+        "title": "Sourcing Decision Process",
+        "role": "PMP",
+        "hours": 40.0
+      },
+      {
+        "seq": 135,
+        "phase": "30 3. Industrialization",
+        "stepPath": "80 Early Tooling Kickoff / blank / blank",
+        "title": "Purchase Order",
+        "role": "PMP",
+        "hours": 24.0
+      },
+      {
+        "seq": 136,
+        "phase": "30 3. Industrialization",
+        "stepPath": "80 Early Tooling Kickoff / blank / blank",
+        "title": "Customer Information",
+        "role": "KAM",
+        "hours": 4.0
+      },
+      {
+        "seq": 137,
+        "phase": "30 3. Industrialization",
+        "stepPath": "80 Early Tooling Kickoff / blank / blank",
+        "title": "Internal Processes",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 138,
+        "phase": "30 3. Industrialization",
+        "stepPath": "80 Early Tooling Kickoff / blank / blank",
+        "title": "Risk Evaluation",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 139,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "(update) Packaging, Transport, Logistics Concept, Supply Chain Checklist (PMC evaluation)",
+        "role": "PLP",
+        "hours": 6.0
+      },
+      {
+        "seq": 140,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "(update) Production Process Concept (PMC evaluation)",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 141,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Process Plan Mass Production /Process Layout (PMC evaluation)",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 142,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "P-FMEA documentation (PMC evaluation)",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 143,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Capex Approval (PMC evaluation)",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 144,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "IPT preparation",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 145,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "HSE Risk Assessment",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 146,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "(update) Risk Assessment for Purchase Parts (PMC evaluation)",
+        "role": "PMP",
+        "hours": 4.0
+      },
+      {
+        "seq": 147,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "(update) pBOM (PMC evaluation)",
+        "role": "PMP",
+        "hours": 4.0
+      },
+      {
+        "seq": 148,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "PRFPP (PMC evaluation)",
+        "role": "PMP",
+        "hours": 2.0
+      },
+      {
+        "seq": 149,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Sourcing decision (Sourcing Decision Sheet) (PMC evaluation)",
+        "role": "PMP",
+        "hours": 2.0
+      },
+      {
+        "seq": 150,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Early kick off tooling for in house parts and/or PP (PMC evaluation)",
+        "role": "PMP",
+        "hours": 24.0
+      },
+      {
+        "seq": 151,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Pre-series cost and quantity agreed (PMC evaluation)",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 152,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "eRFQ done (PMC evaluation)",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 153,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Supplier Production Capacity Confirmation incl. carry-over parts (PMC evaluation)",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 154,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Costed packaging data sheet (PDS) available (PMC evaluation)",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 155,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Supplier Cost Break Down available (PMC evaluation)",
+        "role": "PMP",
+        "hours": 4.0
+      },
+      {
+        "seq": 156,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "APQP Overview available (PMC evaluation)",
+        "role": "PMP",
+        "hours": 4.0
+      },
+      {
+        "seq": 157,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "(update) OE Spare Parts (PMC evaluation)",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 158,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Feedback Prototype Customer Validation (PMC evaluation)",
+        "role": "LPE",
+        "hours": 6.0
+      },
+      {
+        "seq": 159,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Check concept & interfaces - Concept Freeze (PMC evaluation)",
+        "role": "LPE",
+        "hours": 18.0
+      },
+      {
+        "seq": 160,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "2D drawing agereement with customer (PMC evaluation)",
+        "role": "LPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 161,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "RFQ Requirements for Nomination of tool suppliers and or LL PP (PMC evaluation)",
+        "role": "LPE",
+        "hours": 12.0
+      },
+      {
+        "seq": 162,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "(update) DSR (Spec./Product Assurance Plan)/ DVP (PMC evaluation)",
+        "role": "LPE",
+        "hours": 6.0
+      },
+      {
+        "seq": 163,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "(update) BOM, 3D data, drawings (PMC evaluation)",
+        "role": "LPE",
+        "hours": 6.0
+      },
+      {
+        "seq": 164,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "(update) D-FMEA documentation (PMC evaluation)",
+        "role": "LPE",
+        "hours": 12.0
+      },
+      {
+        "seq": 165,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Design Review B-Prototypes (PMC evaluation)",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 166,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Perform DVP (validation plan)/Test Report B-prototypes (PMC evaluation)",
+        "role": "LPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 166,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Perform DVP (validation plan)/Test Report B-prototypes (PMC evaluation)",
+        "role": "LAB",
+        "hours": 80.0
+      },
+      {
+        "seq": 167,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Design Freeze Mass Production (PMC evaluation)",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 168,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "B Prototype Part Release (PMC evaluation)",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 169,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "SCL (PMC evaluation)",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 170,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Control Plan Pre-and Series Production (PMC evaluation)",
+        "role": "PQE",
+        "hours": 24.0
+      },
+      {
+        "seq": 171,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "B Prototype Inspection Report (PMC evaluation)",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 172,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Cost Calculation (M/P) + PER (PMC evaluation)",
+        "role": "PC",
+        "hours": 8.0
+      },
+      {
+        "seq": 173,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "(update) Value Engineering/Value Analysis (PMC evaluation)",
+        "role": "PC",
+        "hours": 8.0
+      },
+      {
+        "seq": 174,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Customer order MP tooling (PMC evaluation)",
+        "role": "KAM",
+        "hours": 2.0
+      },
+      {
+        "seq": 175,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "(update) Feasibility Confirmation (PMC evaluation)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 176,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Pre-Production Planning (PMC evaluation)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 177,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "(update) PCR (PMC evaluation)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 178,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "DLS Production Preparation G4 Report Out (PMC evaluation)",
+        "role": "PM",
+        "hours": 40.0
+      },
+      {
+        "seq": 179,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "(update) Timing Plan (PMC evaluation)",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 180,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "(update) Risk Analysis (PMC evaluation)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 181,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "(update) Kick-Off/ Project Planning (PMC evaluation)",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 182,
+        "phase": "30 3. Industrialization",
+        "stepPath": "100 Gate 4 - Mass Production Kick-off Approval / blank / blank",
+        "title": "Project Status Report (PMC evaluation)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 183,
+        "phase": "30 3. Industrialization",
+        "stepPath": "blank / blank",
+        "title": "110 Assembly (saleable product)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 184,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component",
+        "title": "10 Tooling kick-off",
+        "role": "LPE",
+        "hours": 2.0
+      },
+      {
+        "seq": 185,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 20 Tooling Development",
+        "title": "Kickoff Meeting",
+        "role": "PMP",
+        "hours": 16.0
+      },
+      {
+        "seq": 186,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 20 Tooling Development",
+        "title": "Purchase Order",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 187,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 20 Tooling Development",
+        "title": "Interim Design Approval - OK to purchase Materials",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 188,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 20 Tooling Development",
+        "title": "Final Design Approval",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 189,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 20 Tooling Development",
+        "title": "Materials Ordered for Trials",
+        "role": "PLP",
+        "hours": 16.0
+      },
+      {
+        "seq": 190,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 20 Tooling Development",
+        "title": "First Shot Trial",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 191,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 30 Tooling Refinement",
+        "title": "Trial Run",
+        "role": "PPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 192,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 30 Tooling Refinement",
+        "title": "Measurement of Samples",
+        "role": "PQE",
+        "hours": 40.0
+      },
+      {
+        "seq": 193,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 30 Tooling Refinement",
+        "title": "Samples Reviewed - Feedback Given to Supplier",
+        "role": "PPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 194,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 30 Tooling Refinement",
+        "title": "Tuning Loop 1",
+        "role": "PPE",
+        "hours": 60.0
+      },
+      {
+        "seq": 195,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 30 Tooling Refinement",
+        "title": "Trial Run",
+        "role": "PPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 196,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 30 Tooling Refinement",
+        "title": "Measurement of Samples",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 197,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 30 Tooling Refinement",
+        "title": "Samples Reviewed - Feedback Given to Supplier",
+        "role": "PPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 198,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 30 Tooling Refinement",
+        "title": "Tuning Loop 2",
+        "role": "PPE",
+        "hours": 60.0
+      },
+      {
+        "seq": 199,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 30 Tooling Refinement",
+        "title": "Trial Run",
+        "role": "PPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 200,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 30 Tooling Refinement",
+        "title": "Measurement of Samples",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 201,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 30 Tooling Refinement",
+        "title": "Tooling Acceptance at Vendor (OK to Ship)",
+        "role": "PPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 202,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 40 Tooling Shipment",
+        "title": "Tooling Delivered to Production Site",
+        "role": "PPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 203,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 50 Tooling Release",
+        "title": "Trial Run",
+        "role": "PPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 204,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 50 Tooling Release",
+        "title": "Measurement of Samples",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 205,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 50 Tooling Release",
+        "title": "Samples Reviewed - Feedback Given to Supplier",
+        "role": "PPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 206,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 50 Tooling Release",
+        "title": "Tuning Loop",
+        "role": "PPE",
+        "hours": 60.0
+      },
+      {
+        "seq": 207,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 50 Tooling Release",
+        "title": "Trial Run",
+        "role": "PPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 208,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 50 Tooling Release",
+        "title": "Measurement of Samples",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 209,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 10 Inhouse production component / 50 Tooling Release",
+        "title": "Tooling Acceptance at Production Site",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 210,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 20 Purchased component / 10 Tooling Development",
+        "title": "Kickoff Meeting",
+        "role": "PMP",
+        "hours": 16.0
+      },
+      {
+        "seq": 211,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 20 Purchased component / 10 Tooling Development",
+        "title": "Purchase Order",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 212,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 20 Purchased component / 10 Tooling Development",
+        "title": "First off tool parts",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 213,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 20 Purchased component",
+        "title": "20 (MS) FOT availability for purchased part(s)",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 214,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 20 Purchased component / 30 Tooling Refinement",
+        "title": "Parts 100% Dimensional Status",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 215,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 20 Purchased component / 30 Tooling Refinement",
+        "title": "Tooling Acceptance at tooling supplier",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 216,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 20 Purchased component / 40 Tooling Release",
+        "title": "Samples Reviewed - Feedback Given to Supplier",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 217,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 20 Purchased component / 40 Tooling Release",
+        "title": "Define Receiving Inspection",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 218,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 20 Purchased component / 40 Tooling Release",
+        "title": "Run@Rate at supplier",
+        "role": "PMP",
+        "hours": 40.0
+      },
+      {
+        "seq": 219,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 20 Purchased component",
+        "title": "50 (MS) PPAP purchased part(s) approved",
+        "role": "PMP",
+        "hours": 40.0
+      },
+      {
+        "seq": 220,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 10 Equipment Development",
+        "title": "Kickoff Meeting",
+        "role": "PPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 221,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 10 Equipment Development",
+        "title": "Purchase Order",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 222,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 10 Equipment Development",
+        "title": "Interim Design Approval - OK to purchase Materials",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 223,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 10 Equipment Development",
+        "title": "Final Design Approval",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 224,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 10 Equipment Development",
+        "title": "Initial Runoff",
+        "role": "PPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 225,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 20 Equipment Refinement",
+        "title": "Complete Machine Checklist",
+        "role": "PPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 226,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 20 Equipment Refinement",
+        "title": "Initial Validation of part performance",
+        "role": "PPE",
+        "hours": 120.0
+      },
+      {
+        "seq": 227,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 20 Equipment Refinement",
+        "title": "Shipment of first samples",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 228,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 20 Equipment Refinement",
+        "title": "Measurement of Samples",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 229,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 20 Equipment Refinement",
+        "title": "Cycle Time Targets Achieved at Supplier",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 230,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 20 Equipment Refinement",
+        "title": "Tooling Acceptance at Vendor (OK to Ship)",
+        "role": "PPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 231,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment",
+        "title": "30 Equipment Shipment",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 232,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 40 Equipment Release",
+        "title": "Installation into the Production Plant",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 233,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 40 Equipment Release",
+        "title": "Create Initial Assemblies",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 234,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 40 Equipment Release",
+        "title": "Validation of part performance",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 235,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 40 Equipment Release",
+        "title": "Complete Machine Checklist",
+        "role": "PPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 236,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 40 Equipment Release",
+        "title": "Measurement of Samples",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 237,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 40 Equipment Release",
+        "title": "Cycle Time Targets Achieved at Production site",
+        "role": "PPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 238,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 30 Assembly equipment / 40 Equipment Release",
+        "title": "Equipment Acceptance at Production Site",
+        "role": "PPE",
+        "hours": 24.0
+      },
+      {
+        "seq": 239,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 40 Carry Over Components / 10 Update PPAP",
+        "title": "Update PPAP for purchased carryover components",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 240,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 40 Carry Over Components / 10 Update PPAP",
+        "title": "Update PPAP for in-house carryover components",
+        "role": "SQD",
+        "hours": 24.0
+      },
+      {
+        "seq": 241,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing",
+        "title": "10 Product Validation Preparation",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 242,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 20 (CP) Pre Production Readiness (PPT)",
+        "title": "Effeciency",
+        "role": "PPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 243,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 20 (CP) Pre Production Readiness (PPT)",
+        "title": "FTQ",
+        "role": "PPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 244,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 20 (CP) Pre Production Readiness (PPT)",
+        "title": "Excel Checklist",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 245,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 20 (CP) Pre Production Readiness (PPT)",
+        "title": "PPT audit report",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 246,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing",
+        "title": "30 First Customer Audit",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 247,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing",
+        "title": "40 MP Parts dimensional check (assembly)",
+        "role": "PQE",
+        "hours": 24.0
+      },
+      {
+        "seq": 248,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 50 M+H PV tests (Production Validation Tests)",
+        "title": "Part Approval for Testing",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 248,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 50 M+H PV tests (Production Validation Tests)",
+        "title": "Part Approval for Testing",
+        "role": "LAB",
+        "hours": 40.0
+      },
+      {
+        "seq": 249,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 50 M+H PV tests (Production Validation Tests)",
+        "title": "Testing Completed",
+        "role": "PPE",
+        "hours": 2.0
+      },
+      {
+        "seq": 249,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 50 M+H PV tests (Production Validation Tests)",
+        "title": "Testing Completed",
+        "role": "LAB",
+        "hours": 230.0
+      },
+      {
+        "seq": 250,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 50 M+H PV tests (Production Validation Tests)",
+        "title": "Testing Report",
+        "role": "LPE",
+        "hours": 72.0
+      },
+      {
+        "seq": 251,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 50 M+H PV tests (Production Validation Tests)",
+        "title": "Customer Approval of Testing Report",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 252,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 50 M+H PV tests (Production Validation Tests)",
+        "title": "Design Review",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 253,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing",
+        "title": "60 (MS) Off Tool Parts availability at customer",
+        "role": "PLP",
+        "hours": 2.0
+      },
+      {
+        "seq": 254,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 70 (CP) Production readiness (IPT)",
+        "title": "Effeciency",
+        "role": "PPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 255,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 70 (CP) Production readiness (IPT)",
+        "title": "FTQ",
+        "role": "PPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 256,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 70 (CP) Production readiness (IPT)",
+        "title": "Excel Checklist",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 257,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 70 (CP) Production readiness (IPT)",
+        "title": "IPT audit report",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 258,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing / 70 (CP) Production readiness (IPT)",
+        "title": "PRFPP updated",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 259,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing",
+        "title": "80 PPAP preparation",
+        "role": "PQE",
+        "hours": 40.0
+      },
+      {
+        "seq": 260,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing",
+        "title": "90 (MS) Customer Run at Rate",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 261,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing",
+        "title": "100 (MS) PPAP Submission",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 262,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing",
+        "title": "110 PPAP customer review",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 263,
+        "phase": "30 3. Industrialization",
+        "stepPath": "110 Assembly (saleable product) / 50 Assembly production & testing",
+        "title": "120 (MS) Customer PPAP Approval",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 264,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Perequesites for invoicing (PMC evaluation)",
+        "role": "PM",
+        "hours": 40.0
+      },
+      {
+        "seq": 265,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "update Timing Plan (PMC evaluation)",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 266,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "update Risk Analysis (PMC evaluation)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 267,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Project Status Report (PMC evaluation)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 268,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Invalidate Part No in CDB and disposition prototype tooling with customer (PMC evaluation)",
+        "role": "KAM",
+        "hours": 2.0
+      },
+      {
+        "seq": 269,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Invoicing (PMC evaluation)",
+        "role": "KAM",
+        "hours": 8.0
+      },
+      {
+        "seq": 270,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Customer Order - EDI (PMC evaluation)",
+        "role": "KAM",
+        "hours": 2.0
+      },
+      {
+        "seq": 271,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Approved Tooling & Equipment Status (PMC evaluation)",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 272,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Machine Capability (PMC evaluation)",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 273,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Short Term Process Capability (PMC evaluation)",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 274,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Production Standard Overview / Deployment (PMC evaluation)",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 275,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Production Basics Document (PMC evaluation)",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 276,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Tooling requirements for invoicing (PMC evaluation)",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 277,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "update P-FMEA Documentation (PMC evaluation)",
+        "role": "PPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 278,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "update Process Plan Mass Production / Process Layout (PMC evaluation)",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 279,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "(Update) HSE Risk Assessment",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 280,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "update Packaging, Transport, Logistics Concept, Supply Chain Checklist (PMC evaluation)",
+        "role": "PLP",
+        "hours": 4.0
+      },
+      {
+        "seq": 281,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "PPAP release purchase parts (PMC evaluation)",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 282,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "update pBOM (PMC evaluation)",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 283,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Tooling tag pictures available (PMC evaluation)",
+        "role": "PMP",
+        "hours": 40.0
+      },
+      {
+        "seq": 284,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "APQP overview updated (PMC evaluation)",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 285,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Scheduling Agreement in place incl. agreed savings (LTA) (PMC evaluation)",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 286,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Logistics Protocol available and handover to MP&L done (PMC evaluation)",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 287,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Lessons Learned done (PMC evaluation)",
+        "role": "PMP",
+        "hours": 8.0
+      },
+      {
+        "seq": 288,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "DSR (Spec./Product Assurance Plan/ Requalification/FFAP) (PMC evaluation)",
+        "role": "LPE",
+        "hours": 20.0
+      },
+      {
+        "seq": 289,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Perform Mass Production DVP/ Test Report Mass Production (PMC evaluation)",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 290,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Design Review C (PMC evaluation)",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 291,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "update D-FMEA documentation (PMC evaluation)",
+        "role": "LPE",
+        "hours": 40.0
+      },
+      {
+        "seq": 292,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "C1/C2/C3 Prototype Inspection Report (PMC evaluation)",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 293,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Mass Production Inspection Report (PMC evaluation)",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 294,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "C1/C2/C3 Prototype Part Release (PMC evaluation)",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 295,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "MSA (PMC evaluation)",
+        "role": "PQE",
+        "hours": 40.0
+      },
+      {
+        "seq": 296,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Control Plan Pre-Series Production (PMC evaluation)",
+        "role": "PQE",
+        "hours": 40.0
+      },
+      {
+        "seq": 297,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Material Declarations (PMC evaluation)",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 298,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Control Plan Mass Production (PMC evaluation)",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 299,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Tooling requirements for invoicing (PMC evaluation)",
+        "role": "PQE",
+        "hours": 16.0
+      },
+      {
+        "seq": 300,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Internal Component Inspection Report (PMC evaluation)",
+        "role": "SQD",
+        "hours": 40.0
+      },
+      {
+        "seq": 301,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "PPAP preparation + Submission (PMC evaluation)",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 302,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "PPAP Approval (PMC evaluation)",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 303,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "update SCL (PMC evaluation)",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 304,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "SCL confirmation (PMC evaluation)",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 305,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Capitalized Development cost (PMC evaluation)",
+        "role": "PC",
+        "hours": 8.0
+      },
+      {
+        "seq": 306,
+        "phase": "30 3. Industrialization",
+        "stepPath": "120 Gate 6 - SOP Kick-off Approval / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "update Cost calculation and PER update (PMC evaluation)",
+        "role": "PC",
+        "hours": 8.0
+      },
+      {
+        "seq": 307,
+        "phase": "30 3. Industrialization",
+        "stepPath": "50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "130 (MS) Start Of Production (SOP) (Customer)",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 308,
+        "phase": "30 3. Industrialization",
+        "stepPath": "140 (CP) Project Closure / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Long-term process capability (CP evaluation)",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 309,
+        "phase": "30 3. Industrialization",
+        "stepPath": "140 (CP) Project Closure / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Overall equipment efficiency - long term (CP evaluation)",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 310,
+        "phase": "30 3. Industrialization",
+        "stepPath": "140 (CP) Project Closure / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Cost Calculation and PER update (CP evaluation)",
+        "role": "PC",
+        "hours": 8.0
+      },
+      {
+        "seq": 311,
+        "phase": "30 3. Industrialization",
+        "stepPath": "140 (CP) Project Closure / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Action plan from Risk Analysis executed (CP evaluation)",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 312,
+        "phase": "30 3. Industrialization",
+        "stepPath": "140 (CP) Project Closure / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Project Status Report (CP evaluation)",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 313,
+        "phase": "30 3. Industrialization",
+        "stepPath": "140 (CP) Project Closure / 50 Assembly production & testing / 120 (MS) Customer PPAP Approval",
+        "title": "Final Project Report (CP evaluation)",
+        "role": "PM",
+        "hours": 8.0
+      }
+    ]
+  },
+  "types": {
+    "G": [
+      {
+        "seq": 1,
+        "stepPath": "",
+        "title": "10 Requirements",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 2,
+        "stepPath": "10 Requirements",
+        "title": "10 Check internal order number",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 3,
+        "stepPath": "10 Requirements",
+        "title": "20 Check and complete Product datasheet",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 4,
+        "stepPath": "10 Requirements",
+        "title": "30 Create and define printing & packaging layout",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 5,
+        "stepPath": "10 Requirements",
+        "title": "40 Kick-off",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 6,
+        "stepPath": "10 Requirements",
+        "title": "60 Target costing",
+        "role": "PC",
+        "hours": 4.0
+      },
+      {
+        "seq": 7,
+        "stepPath": "10 Requirements",
+        "title": "70 Pre-evaluation (for Chinese locations)",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 8,
+        "stepPath": "70 Pre-evaluation (for Chinese locations)",
+        "title": "20 Cost & quotation",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 9,
+        "stepPath": "20 Cost & quotation",
+        "title": "5 Create sample part number",
+        "role": "LPE",
+        "hours": 2.0
+      },
+      {
+        "seq": 10,
+        "stepPath": "20 Cost & quotation",
+        "title": "10 Create RFQ input file",
+        "role": "PMP",
+        "hours": 2.0
+      },
+      {
+        "seq": 11,
+        "stepPath": "20 Cost & quotation",
+        "title": "20 Send out RFQ",
+        "role": "PMP",
+        "hours": 2.0
+      },
+      {
+        "seq": 12,
+        "stepPath": "20 Cost & quotation",
+        "title": "30 Receipt and processing of RFQ",
+        "role": "PMP",
+        "hours": 2.0
+      },
+      {
+        "seq": 13,
+        "stepPath": "20 Cost & quotation",
+        "title": "40 Request supplier documents",
+        "role": "PMP",
+        "hours": 4.0
+      },
+      {
+        "seq": 14,
+        "stepPath": "20 Cost & quotation",
+        "title": "50 Request PPAP and Packaging Data Sheet (PDS)",
+        "role": "PMP",
+        "hours": 2.0
+      },
+      {
+        "seq": 15,
+        "stepPath": "20 Cost & quotation",
+        "title": "60 Receive, check and store supplier documents",
+        "role": "LPE",
+        "hours": 2.0
+      },
+      {
+        "seq": 16,
+        "stepPath": "20 Cost & quotation / 60 Receive, check and store supplier documents",
+        "title": "Product drawing (dxf + pdf)",
+        "role": "LPE",
+        "hours": 2.0
+      },
+      {
+        "seq": 17,
+        "stepPath": "20 Cost & quotation / 60 Receive, check and store supplier documents",
+        "title": "OE/2nd Tier confirmation (pdf)",
+        "role": "PMP",
+        "hours": 4.0
+      },
+      {
+        "seq": 18,
+        "stepPath": "20 Cost & quotation / 60 Receive, check and store supplier documents",
+        "title": "Diecut drawing (pdf, eps, ai or illustrator) or diecut dimenstions incl. PAP symbol",
+        "role": "LPE",
+        "hours": 2.0
+      },
+      {
+        "seq": 19,
+        "stepPath": "20 Cost & quotation / 60 Receive, check and store supplier documents",
+        "title": "TDS (xlsx)",
+        "role": "LPE",
+        "hours": 2.0
+      },
+      {
+        "seq": 20,
+        "stepPath": "20 Cost & quotation / 70 Check/evaluate supplier technical datasheet",
+        "title": "Supplier technical datasheet according requirements?",
+        "role": "LPE",
+        "hours": 2.0
+      },
+      {
+        "seq": 21,
+        "stepPath": "20 Cost & quotation",
+        "title": "80 Order/Handover OE products / competitor products + accessories",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 22,
+        "stepPath": "20 Cost & quotation / 80 Order/Handover OE products / competitor products + accessories",
+        "title": "OE/ competitor products available?",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 23,
+        "stepPath": "20 Cost & quotation / 80 Order/Handover OE products / competitor products + accessories",
+        "title": "Accessories available?",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 24,
+        "stepPath": "20 Cost & quotation",
+        "title": "90 Request parts from supplier (if required)",
+        "role": "LPE",
+        "hours": 2.0
+      },
+      {
+        "seq": 25,
+        "stepPath": "20 Cost & quotation",
+        "title": "100 Receipt of samples (if required)",
+        "role": "LPE",
+        "hours": 2.0
+      },
+      {
+        "seq": 26,
+        "stepPath": "20 Cost & quotation / 110 Visual inspection (if required)",
+        "title": "Are forwarded parts visually OK or n.OK?",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 26,
+        "stepPath": "20 Cost & quotation / 110 Visual inspection (if required)",
+        "title": "Are forwarded parts visually OK or n.OK?",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 27,
+        "stepPath": "20 Cost & quotation",
+        "title": "120 Evaluation, negotiation and selection of supplier",
+        "role": "PMP",
+        "hours": 4.0
+      },
+      {
+        "seq": 28,
+        "stepPath": "20 Cost & quotation",
+        "title": "130 Execute sourcing decision",
+        "role": "PMP",
+        "hours": 4.0
+      },
+      {
+        "seq": 29,
+        "stepPath": "20 Cost & quotation",
+        "title": "140 Supplier nomination",
+        "role": "PMP",
+        "hours": 4.0
+      },
+      {
+        "seq": 30,
+        "stepPath": "140 Supplier nomination",
+        "title": "40 Sample evaluation",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 31,
+        "stepPath": "40 Sample evaluation / 20 Mounting test part/s according requirement (if required)",
+        "title": "Fitment confirmation in application required?",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 32,
+        "stepPath": "40 Sample evaluation / 30 Initiate laboratory test and obtain due date (if required)",
+        "title": "Check the possibility of reduce product validation by Family release, Supplier test bench validation, M+H nominated media,",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 33,
+        "stepPath": "40 Sample evaluation",
+        "title": "40 Material tests acc. to requirements",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 34,
+        "stepPath": "40 Sample evaluation / 40 Material tests acc. to requirements",
+        "title": "OE/competitor part tested",
+        "role": "LAB",
+        "hours": 16.0
+      },
+      {
+        "seq": 35,
+        "stepPath": "40 Sample evaluation / 40 Material tests acc. to requirements",
+        "title": "Supplier part tested",
+        "role": "LAB",
+        "hours": 16.0
+      },
+      {
+        "seq": 36,
+        "stepPath": "40 Sample evaluation",
+        "title": "50 Functional tests acc. to requirements",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 37,
+        "stepPath": "40 Sample evaluation / 50 Functional tests acc. to requirements",
+        "title": "OE/competitor part tested",
+        "role": "LAB",
+        "hours": 16.0
+      },
+      {
+        "seq": 38,
+        "stepPath": "40 Sample evaluation / 50 Functional tests acc. to requirements",
+        "title": "Supplier part tested",
+        "role": "LAB",
+        "hours": 16.0
+      },
+      {
+        "seq": 39,
+        "stepPath": "40 Sample evaluation / 60 Create, release test report & propose improvements if failed",
+        "title": "Functional release given?",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 40,
+        "stepPath": "40 Sample evaluation",
+        "title": "71 Create, release measurement report for requested parts",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 41,
+        "stepPath": "40 Sample evaluation / 80 Functional/Technical-release of supplier sample/product",
+        "title": "Functional release given?",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 42,
+        "stepPath": "80 Functional/Technical-release of supplier sample/product",
+        "title": "50 Serial BoM & drawing",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 43,
+        "stepPath": "50 Serial BoM & drawing",
+        "title": "20 Create item master",
+        "role": "CAD",
+        "hours": 2.0
+      },
+      {
+        "seq": 44,
+        "stepPath": "50 Serial BoM & drawing",
+        "title": "30 Create and internally release drawings",
+        "role": "CAD",
+        "hours": 4.0
+      },
+      {
+        "seq": 45,
+        "stepPath": "50 Serial BoM & drawing",
+        "title": "40 Release item master",
+        "role": "CAD",
+        "hours": 4.0
+      },
+      {
+        "seq": 46,
+        "stepPath": "50 Serial BoM & drawing",
+        "title": "50 Milestone 1: Item master released",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 47,
+        "stepPath": "50 Serial BoM & drawing",
+        "title": "60 Create and release technical datasheet",
+        "role": "LPE",
+        "hours": 6.0
+      },
+      {
+        "seq": 48,
+        "stepPath": "50 Serial BoM & drawing",
+        "title": "70 Create, release and store instruction manual",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 49,
+        "stepPath": "50 Serial BoM & drawing",
+        "title": "80 Request drawing approval from customer/supplier",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 50,
+        "stepPath": "50 Serial BoM & drawing",
+        "title": "90 Approve drawing (internal/external)",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 51,
+        "stepPath": "90 Approve drawing (internal/external)",
+        "title": "60 Packaging",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 52,
+        "stepPath": "60 Packaging",
+        "title": "50 Initiate / create folding box label / layout",
+        "role": "PLP",
+        "hours": 2.0
+      },
+      {
+        "seq": 52,
+        "stepPath": "60 Packaging",
+        "title": "50 Initiate / create folding box label / layout",
+        "role": "CAD",
+        "hours": 2.0
+      },
+      {
+        "seq": 52,
+        "stepPath": "60 Packaging",
+        "title": "50 Initiate / create folding box label / layout",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 52,
+        "stepPath": "60 Packaging",
+        "title": "50 Initiate / create folding box label / layout",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 53,
+        "stepPath": "60 Packaging",
+        "title": "80 Approve layout / label",
+        "role": "PLP",
+        "hours": 4.0
+      },
+      {
+        "seq": 53,
+        "stepPath": "60 Packaging",
+        "title": "80 Approve layout / label",
+        "role": "CAD",
+        "hours": 2.0
+      },
+      {
+        "seq": 53,
+        "stepPath": "60 Packaging",
+        "title": "80 Approve layout / label",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 53,
+        "stepPath": "60 Packaging",
+        "title": "80 Approve layout / label",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 54,
+        "stepPath": "80 Approve layout / label",
+        "title": "70 Order finished goods",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 55,
+        "stepPath": "70 Order finished goods",
+        "title": "10 First order commitment",
+        "role": "PMP",
+        "hours": 4.0
+      },
+      {
+        "seq": 56,
+        "stepPath": "70 Order finished goods",
+        "title": "20 Release PPAP, Part Submission Warrant (PSW), Packaging Data Sheet (PDS)",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 57,
+        "stepPath": "70 Order finished goods",
+        "title": "30 Create SAP views",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 58,
+        "stepPath": "70 Order finished goods",
+        "title": "40 Create demands",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 59,
+        "stepPath": "70 Order finished goods",
+        "title": "50 Create MANN-FILTER demands",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 60,
+        "stepPath": "70 Order finished goods",
+        "title": "60 Execute order to supplier",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 61,
+        "stepPath": "70 Order finished goods",
+        "title": "70 Update confirmed delivery date in ERP",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 62,
+        "stepPath": "70 Order finished goods",
+        "title": "80 Finalize 1P1P",
+        "role": "PC",
+        "hours": 2.0
+      },
+      {
+        "seq": 63,
+        "stepPath": "80 Finalize 1P1P",
+        "title": "90 Product Release",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 64,
+        "stepPath": "90 Product Release / 10 Incoming good inspection",
+        "title": "Incoming goods inspection done?",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 65,
+        "stepPath": "90 Product Release",
+        "title": "20 Milestone 2: Inform about parts on stock",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 66,
+        "stepPath": "90 Product Release",
+        "title": "30 Close NPI",
+        "role": "PM",
+        "hours": 2.0
+      }
+    ],
+    "H": [
+      {
+        "seq": 1,
+        "stepPath": "",
+        "title": "10 Requirements",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 2,
+        "stepPath": "10 Requirements",
+        "title": "10 Check and complete Product datasheet",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 3,
+        "stepPath": "10 Requirements",
+        "title": "20 Kick-off",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 4,
+        "stepPath": "10 Requirements / 20 Kick-off",
+        "title": "check internal order number",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 5,
+        "stepPath": "10 Requirements / 20 Kick-off",
+        "title": "clarify the need for samples",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 6,
+        "stepPath": "10 Requirements / 20 Kick-off",
+        "title": "check patent situation",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 7,
+        "stepPath": "10 Requirements / 20 Kick-off",
+        "title": "clarify necessary activities with purchasing",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 8,
+        "stepPath": "10 Requirements / 20 Kick-off",
+        "title": "update team",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 9,
+        "stepPath": "10 Requirements",
+        "title": "30 Check and complete team",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 10,
+        "stepPath": "30 Check and complete team",
+        "title": "70 Serial BoM & drawing",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 11,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "10 Create item master",
+        "role": "CAD",
+        "hours": 8.0
+      },
+      {
+        "seq": 11,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "10 Create item master",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 12,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "20 Create and release drawings",
+        "role": "CAD",
+        "hours": 40.0
+      },
+      {
+        "seq": 12,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "20 Create and release drawings",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 13,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "30 Release item master",
+        "role": "CAD",
+        "hours": 4.0
+      },
+      {
+        "seq": 13,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "30 Release item master",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 14,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "35 Milestone 1: Item master released",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 15,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "40 Create and release technical data sheet",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 16,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "60 Request drawing approval from customer/supplier",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 17,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "70 Approve drawing",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 18,
+        "stepPath": "70 Approve drawing",
+        "title": "80 Packaging",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 19,
+        "stepPath": "80 Packaging",
+        "title": "10 Define / update packaging data",
+        "role": "PLP",
+        "hours": 3.0
+      },
+      {
+        "seq": 20,
+        "stepPath": "80 Packaging",
+        "title": "20 Define packaging components",
+        "role": "PLP",
+        "hours": 3.0
+      },
+      {
+        "seq": 21,
+        "stepPath": "80 Packaging",
+        "title": "40 Plan packaging",
+        "role": "PLP",
+        "hours": 2.5
+      },
+      {
+        "seq": 22,
+        "stepPath": "80 Packaging",
+        "title": "50 Initiate/Create folding box label/layout",
+        "role": "PLP",
+        "hours": 2.0
+      },
+      {
+        "seq": 22,
+        "stepPath": "80 Packaging",
+        "title": "50 Initiate/Create folding box label/layout",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 23,
+        "stepPath": "80 Packaging",
+        "title": "70 Request layout / label approval from customer",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 24,
+        "stepPath": "80 Packaging",
+        "title": "80 Approve layout / label",
+        "role": "PLP",
+        "hours": 2.0
+      },
+      {
+        "seq": 24,
+        "stepPath": "80 Packaging",
+        "title": "80 Approve layout / label",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 25,
+        "stepPath": "80 Approve layout / label",
+        "title": "90 Plant preparation",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 26,
+        "stepPath": "90 Plant preparation",
+        "title": "10 Initiate POP",
+        "role": "PPE",
+        "hours": 20.0
+      },
+      {
+        "seq": 27,
+        "stepPath": "90 Plant preparation",
+        "title": "20 Confirm readiness for production",
+        "role": "PPE",
+        "hours": 20.0
+      },
+      {
+        "seq": 28,
+        "stepPath": "90 Plant preparation",
+        "title": "30 Check MDG (for Speyer only)",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 29,
+        "stepPath": "30 Check MDG (for Speyer only)",
+        "title": "100 Order finished goods",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 29,
+        "stepPath": "30 Check MDG (for Speyer only)",
+        "title": "100 Order finished goods",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 30,
+        "stepPath": "100 Order finished goods",
+        "title": "10 Create sales data in ERP",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 31,
+        "stepPath": "100 Order finished goods",
+        "title": "20 Create demands",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 32,
+        "stepPath": "20 Create demands",
+        "title": "110 Order production material",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 33,
+        "stepPath": "110 Order production material",
+        "title": "20 Set production order / Generate requirements for purchase orders",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 34,
+        "stepPath": "110 Order production material",
+        "title": "30 Procure production components",
+        "role": "PMP",
+        "hours": 4.0
+      },
+      {
+        "seq": 35,
+        "stepPath": "110 Order production material",
+        "title": "60 Manufacture parts and book into quarantine store",
+        "role": "PLP",
+        "hours": 5.0
+      },
+      {
+        "seq": 36,
+        "stepPath": "110 Order production material",
+        "title": "70 Milestone 2: Parts manufactured",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 37,
+        "stepPath": "70 Milestone 2: Parts manufactured",
+        "title": "120 Product Release",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 38,
+        "stepPath": "120 Product Release",
+        "title": "10 Create (internal) product quality release",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 39,
+        "stepPath": "120 Product Release",
+        "title": "20 Confirm sampling requirements",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 40,
+        "stepPath": "120 Product Release",
+        "title": "30 Create sampling documents",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 41,
+        "stepPath": "120 Product Release",
+        "title": "40 Optional: Request approval from customer",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 42,
+        "stepPath": "120 Product Release",
+        "title": "50 Approve samples",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 43,
+        "stepPath": "120 Product Release",
+        "title": "60 Optional: Forward to MR",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 44,
+        "stepPath": "120 Product Release",
+        "title": "70 Store released documents in CDB and inform \"initiator\"",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 45,
+        "stepPath": "120 Product Release",
+        "title": "130 Create test report & propose improvements if failed",
+        "role": "LPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 45,
+        "stepPath": "120 Product Release",
+        "title": "130 Create test report & propose improvements if failed",
+        "role": "LAB",
+        "hours": 40.0
+      },
+      {
+        "seq": 46,
+        "stepPath": "120 Product Release",
+        "title": "150 Release parts from quarantine store and ship parts to central warehouse",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 47,
+        "stepPath": "120 Product Release",
+        "title": "160 Send out first shipment",
+        "role": "PLP",
+        "hours": 4.0
+      },
+      {
+        "seq": 48,
+        "stepPath": "120 Product Release",
+        "title": "200 Milestone 3: Close NPI",
+        "role": "PM",
+        "hours": 2.0
+      }
+    ],
+    "I": [
+      {
+        "seq": 1,
+        "stepPath": "",
+        "title": "10 Requirements",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 2,
+        "stepPath": "10 Requirements",
+        "title": "10 Check and complete Product datasheet",
+        "role": "KAM",
+        "hours": 4.0
+      },
+      {
+        "seq": 3,
+        "stepPath": "10 Requirements",
+        "title": "20 Check and complete team",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 4,
+        "stepPath": "20 Check and complete team",
+        "title": "30 Serial BoM & drawing",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 5,
+        "stepPath": "30 Serial BoM & drawing",
+        "title": "20 Create and release drawings",
+        "role": "CAD",
+        "hours": 4.0
+      },
+      {
+        "seq": 5,
+        "stepPath": "30 Serial BoM & drawing",
+        "title": "20 Create and release drawings",
+        "role": "LPE",
+        "hours": 2.0
+      },
+      {
+        "seq": 6,
+        "stepPath": "20 Create and release drawings",
+        "title": "40 Order finished goods",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 7,
+        "stepPath": "40 Order finished goods",
+        "title": "10 Create sales data",
+        "role": "KAM",
+        "hours": 2.0
+      },
+      {
+        "seq": 8,
+        "stepPath": "40 Order finished goods",
+        "title": "20 Create demands",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 9,
+        "stepPath": "40 Order finished goods",
+        "title": "30 Create MANN-FILTER demands",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 10,
+        "stepPath": "40 Order finished goods",
+        "title": "40 Finalize 1P1P",
+        "role": "PC",
+        "hours": 4.0
+      },
+      {
+        "seq": 11,
+        "stepPath": "40 Finalize 1P1P",
+        "title": "50 Product Release",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 12,
+        "stepPath": "50 Product Release",
+        "title": "10 Incoming goods inspection",
+        "role": "SQD",
+        "hours": 2.0
+      },
+      {
+        "seq": 13,
+        "stepPath": "50 Product Release / 10 Incoming goods inspection",
+        "title": "Incoming goods inspection done?",
+        "role": "SQD",
+        "hours": 4.0
+      },
+      {
+        "seq": 14,
+        "stepPath": "50 Product Release / 10 Incoming goods inspection",
+        "title": "Goods released?",
+        "role": "SQD",
+        "hours": 4.0
+      },
+      {
+        "seq": 15,
+        "stepPath": "50 Product Release",
+        "title": "20 Milestone 3: Close NPI",
+        "role": "PM",
+        "hours": 2.0
+      }
+    ],
+    "P": [
+      {
+        "seq": 1,
+        "stepPath": "",
+        "title": "10 Requirements",
+        "role": "PM",
+        "hours": 36.0
+      },
+      {
+        "seq": 2,
+        "stepPath": "10 Requirements",
+        "title": "10 Check and complete Product datasheet",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 3,
+        "stepPath": "10 Requirements",
+        "title": "20 Check and complete team",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 4,
+        "stepPath": "10 Requirements",
+        "title": "30 Check internal order number",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 5,
+        "stepPath": "10 Requirements",
+        "title": "40 Kick-off",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 6,
+        "stepPath": "10 Requirements",
+        "title": "50 Target costing",
+        "role": "PC",
+        "hours": 8.0
+      },
+      {
+        "seq": 7,
+        "stepPath": "50 Target costing",
+        "title": "20 Performance evaluation",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 8,
+        "stepPath": "20 Performance evaluation",
+        "title": "10 Order/Handover OE products / competitor products + accessories",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 9,
+        "stepPath": "20 Performance evaluation",
+        "title": "40 Define test order and handover OE / competitor products to test laboratory",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 10,
+        "stepPath": "20 Performance evaluation",
+        "title": "50 Test OE / competitor product (functional tests)",
+        "role": "LAB",
+        "hours": 20.0
+      },
+      {
+        "seq": 11,
+        "stepPath": "20 Performance evaluation",
+        "title": "60 Test OE / competitor product (material)",
+        "role": "LAB",
+        "hours": 20.0
+      },
+      {
+        "seq": 12,
+        "stepPath": "20 Performance evaluation",
+        "title": "70 Create and release test report & layout",
+        "role": "LPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 13,
+        "stepPath": "70 Create and release test report & layout",
+        "title": "30 Cost & quotation",
+        "role": "PM",
+        "hours": 16.0
+      },
+      {
+        "seq": 14,
+        "stepPath": "30 Cost & quotation",
+        "title": "20 Price request to plant controlling",
+        "role": "PC",
+        "hours": 8.0
+      },
+      {
+        "seq": 15,
+        "stepPath": "20 Price request to plant controlling",
+        "title": "40 Design concept",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 16,
+        "stepPath": "40 Design concept / 10 Create sample part number",
+        "title": "Link created part number(s) to NPI-Project and confirm",
+        "role": "CAD",
+        "hours": 4.0
+      },
+      {
+        "seq": 16,
+        "stepPath": "40 Design concept / 10 Create sample part number",
+        "title": "Link created part number(s) to NPI-Project and confirm",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 17,
+        "stepPath": "40 Design concept / 20 Align design concept",
+        "title": "Are MANN + HUMMEL patents connected with parts/products?",
+        "role": "LPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 18,
+        "stepPath": "40 Design concept",
+        "title": "30 Check tooling ownership",
+        "role": "PPE",
+        "hours": 12.0
+      },
+      {
+        "seq": 19,
+        "stepPath": "40 Design concept",
+        "title": "40 Last call (stage 1)",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 20,
+        "stepPath": "40 Design concept",
+        "title": "50 Initiate evaluation patent situation",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 21,
+        "stepPath": "40 Design concept",
+        "title": "60 Patent research",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 22,
+        "stepPath": "40 Design concept",
+        "title": "70 Evaluate patent research",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 23,
+        "stepPath": "70 Evaluate patent research",
+        "title": "50 Sample production",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 24,
+        "stepPath": "50 Sample production",
+        "title": "10 Create sample order",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 25,
+        "stepPath": "50 Sample production",
+        "title": "20 Design samples and create drawings",
+        "role": "CAD",
+        "hours": 12.0
+      },
+      {
+        "seq": 25,
+        "stepPath": "50 Sample production",
+        "title": "20 Design samples and create drawings",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 26,
+        "stepPath": "50 Sample production / 20 Design samples and create drawings",
+        "title": "D-FMEA initiated",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 27,
+        "stepPath": "50 Sample production / 20 Design samples and create drawings",
+        "title": "Check existing/matching components (to avoid duplicates)",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 28,
+        "stepPath": "50 Sample production",
+        "title": "30 Order sample material",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 29,
+        "stepPath": "50 Sample production",
+        "title": "40 Produce sampling",
+        "role": "PPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 30,
+        "stepPath": "40 Produce sampling",
+        "title": "60 Sample evaluation",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 31,
+        "stepPath": "60 Sample evaluation",
+        "title": "30 Initiate laboratory test",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 32,
+        "stepPath": "60 Sample evaluation",
+        "title": "40 Test sample product (functional test)",
+        "role": "LAB",
+        "hours": 20.0
+      },
+      {
+        "seq": 33,
+        "stepPath": "60 Sample evaluation",
+        "title": "60 Create, release test report and propose improvements if failed (samples)",
+        "role": "LPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 34,
+        "stepPath": "60 Sample evaluation / 60 Create, release test report and propose improvements if failed (samples)",
+        "title": "Confirm mounting test",
+        "role": "CAD",
+        "hours": 8.0
+      },
+      {
+        "seq": 35,
+        "stepPath": "60 Sample evaluation / 60 Create, release test report and propose improvements if failed (samples)",
+        "title": "Confirm mounting test",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 36,
+        "stepPath": "60 Sample evaluation",
+        "title": "90 Last call (stage 2)",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 37,
+        "stepPath": "90 Last call (stage 2)",
+        "title": "70 Serial BoM & drawing",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 38,
+        "stepPath": "70 Serial BoM & drawing / 10 Create item master",
+        "title": "Link created part number(s) to NPI-Project and confirm",
+        "role": "CAD",
+        "hours": 8.0
+      },
+      {
+        "seq": 39,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "20 Create and release drawings",
+        "role": "CAD",
+        "hours": 12.0
+      },
+      {
+        "seq": 40,
+        "stepPath": "70 Serial BoM & drawing / 20 Create and release drawings",
+        "title": "D-FMEA up-to-date?",
+        "role": "CAD",
+        "hours": 8.0
+      },
+      {
+        "seq": 41,
+        "stepPath": "70 Serial BoM & drawing / 20 Create and release drawings",
+        "title": "Are MANN + HUMMEL patents connected with parts/products?",
+        "role": "CAD",
+        "hours": 8.0
+      },
+      {
+        "seq": 42,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "30 Milestone 1: Item master released",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 43,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "30 Release item master",
+        "role": "CAD",
+        "hours": 4.0
+      },
+      {
+        "seq": 44,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "40 Create and release technical datasheet",
+        "role": "CAD",
+        "hours": 8.0
+      },
+      {
+        "seq": 44,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "40 Create and release technical datasheet",
+        "role": "LPE",
+        "hours": 12.0
+      },
+      {
+        "seq": 45,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "50 Create, release and store instruction manual",
+        "role": "LPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 45,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "50 Create, release and store instruction manual",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 46,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "60 Request drawing approval from customer/supplier",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 46,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "60 Request drawing approval from customer/supplier",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 47,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "70 Approval AZ-drawing (internal/external)",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 47,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "70 Approval AZ-drawing (internal/external)",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 48,
+        "stepPath": "70 Approval AZ-drawing (internal/external)",
+        "title": "80 Packaging",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 49,
+        "stepPath": "80 Packaging",
+        "title": "10 Define / update packaging data",
+        "role": "PLP",
+        "hours": 8.0
+      },
+      {
+        "seq": 50,
+        "stepPath": "80 Packaging",
+        "title": "20 Define packaging components",
+        "role": "PLP",
+        "hours": 8.0
+      },
+      {
+        "seq": 51,
+        "stepPath": "80 Packaging",
+        "title": "40 Plan packaging",
+        "role": "PLP",
+        "hours": 8.0
+      },
+      {
+        "seq": 52,
+        "stepPath": "80 Packaging",
+        "title": "50 Initiate/create/release folding box / label-layout",
+        "role": "PLP",
+        "hours": 8.0
+      },
+      {
+        "seq": 52,
+        "stepPath": "80 Packaging",
+        "title": "50 Initiate/create/release folding box / label-layout",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 53,
+        "stepPath": "80 Packaging",
+        "title": "70 Request layout / label approval from customer",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 53,
+        "stepPath": "80 Packaging",
+        "title": "70 Request layout / label approval from customer",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 54,
+        "stepPath": "80 Packaging",
+        "title": "80 Approve layout / label",
+        "role": "PLP",
+        "hours": 4.0
+      },
+      {
+        "seq": 55,
+        "stepPath": "80 Approve layout / label",
+        "title": "90 Plant preparation",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 56,
+        "stepPath": "90 Plant preparation",
+        "title": "20 Set-up production and confirm readiness",
+        "role": "PPE",
+        "hours": 12.0
+      },
+      {
+        "seq": 57,
+        "stepPath": "90 Plant preparation / 20 Set-up production and confirm readiness",
+        "title": "P-FMEA documentation required and available?",
+        "role": "PPE",
+        "hours": 12.0
+      },
+      {
+        "seq": 58,
+        "stepPath": "90 Plant preparation / 20 Set-up production and confirm readiness",
+        "title": "Confirm readiness for production",
+        "role": "PPE",
+        "hours": 12.0
+      },
+      {
+        "seq": 59,
+        "stepPath": "20 Set-up production and confirm readiness",
+        "title": "100 Order finished goods",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 60,
+        "stepPath": "100 Order finished goods",
+        "title": "10 Create sales data",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 61,
+        "stepPath": "100 Order finished goods",
+        "title": "20 Create demands",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 62,
+        "stepPath": "100 Order finished goods",
+        "title": "30 Create MANN-FILTER demands",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 63,
+        "stepPath": "30 Create MANN-FILTER demands",
+        "title": "110 Order production material",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 64,
+        "stepPath": "110 Order production material",
+        "title": "20 Set production order / Generate requirements for purchase orders",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 65,
+        "stepPath": "110 Order production material",
+        "title": "30 Procure production components",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 66,
+        "stepPath": "110 Order production material",
+        "title": "40 Order folding box",
+        "role": "PLP",
+        "hours": 4.0
+      },
+      {
+        "seq": 67,
+        "stepPath": "110 Order production material",
+        "title": "50 Confirm income of folding box",
+        "role": "PLP",
+        "hours": 4.0
+      },
+      {
+        "seq": 68,
+        "stepPath": "110 Order production material",
+        "title": "60 Manufacture parts and book into quarantine store",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 69,
+        "stepPath": "110 Order production material",
+        "title": "70 Finalize 1P1P",
+        "role": "PC",
+        "hours": 8.0
+      },
+      {
+        "seq": 70,
+        "stepPath": "110 Order production material",
+        "title": "75 Milestone 2: Parts manufactured",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 71,
+        "stepPath": "75 Milestone 2: Parts manufactured",
+        "title": "120 Product Release",
+        "role": "PM",
+        "hours": 8.0
+      },
+      {
+        "seq": 72,
+        "stepPath": "120 Product Release",
+        "title": "10 Create (internal) product quality release",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 73,
+        "stepPath": "120 Product Release / 10 Create (internal) product quality release",
+        "title": "Quality documents available?",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 74,
+        "stepPath": "120 Product Release / 10 Create (internal) product quality release",
+        "title": "Internal audit report available?",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 75,
+        "stepPath": "120 Product Release",
+        "title": "70 Store released documents in CDB and inform \"initiator\"",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 76,
+        "stepPath": "120 Product Release / 70 Store released documents in CDB and inform \"initiator\"",
+        "title": "P-FMEA and Control Plan (PLP) documentation required and available?",
+        "role": "PQE",
+        "hours": 12.0
+      },
+      {
+        "seq": 77,
+        "stepPath": "120 Product Release / 70 Store released documents in CDB and inform \"initiator\"",
+        "title": "Internal product release given?",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 78,
+        "stepPath": "120 Product Release / 70 Store released documents in CDB and inform \"initiator\"",
+        "title": "Optional: external product release (PPAP / PPF) given?",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 79,
+        "stepPath": "120 Product Release / 70 Store released documents in CDB and inform \"initiator\"",
+        "title": "Optional: product release for purchased parts (only if BOM with new purchased parts) given?",
+        "role": "SQD",
+        "hours": 8.0
+      },
+      {
+        "seq": 80,
+        "stepPath": "120 Product Release",
+        "title": "100 Initiate laboratory test",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 81,
+        "stepPath": "120 Product Release",
+        "title": "110 Test serial product (functional test)",
+        "role": "LAB",
+        "hours": 20.0
+      },
+      {
+        "seq": 82,
+        "stepPath": "120 Product Release",
+        "title": "130 Create, release test report & propose improvements if failed",
+        "role": "LPE",
+        "hours": 16.0
+      },
+      {
+        "seq": 83,
+        "stepPath": "120 Product Release / 130 Create, release test report & propose improvements if failed",
+        "title": "Confirm mounting test",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 84,
+        "stepPath": "120 Product Release / 130 Create, release test report & propose improvements if failed",
+        "title": "Confirm mounting test",
+        "role": "CAD",
+        "hours": 4.0
+      },
+      {
+        "seq": 85,
+        "stepPath": "120 Product Release / 130 Create, release test report & propose improvements if failed",
+        "title": "Functional release given?",
+        "role": "LPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 86,
+        "stepPath": "120 Product Release",
+        "title": "150 Release parts from quarantine store and ship parts to central warehouse",
+        "role": "PQE",
+        "hours": 8.0
+      },
+      {
+        "seq": 87,
+        "stepPath": "120 Product Release",
+        "title": "170 Info about parts on stock",
+        "role": "PLP",
+        "hours": 1.0
+      },
+      {
+        "seq": 88,
+        "stepPath": "120 Product Release",
+        "title": "200 Milestone 3: Close NPI",
+        "role": "PM",
+        "hours": 8.0
+      }
+    ],
+    "X": [
+      {
+        "seq": 1,
+        "stepPath": "",
+        "title": "10 Requirements",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 2,
+        "stepPath": "10 Requirements",
+        "title": "20 Check tooling ownership",
+        "role": "LPE",
+        "hours": 2.0
+      },
+      {
+        "seq": 2,
+        "stepPath": "10 Requirements",
+        "title": "20 Check tooling ownership",
+        "role": "PPE",
+        "hours": 2.0
+      },
+      {
+        "seq": 3,
+        "stepPath": "10 Requirements",
+        "title": "40 Check and complete Product datasheet",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 4,
+        "stepPath": "10 Requirements",
+        "title": "80 Define and align customer specific packaging details",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 5,
+        "stepPath": "10 Requirements",
+        "title": "90 Check and complete team",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 6,
+        "stepPath": "90 Check and complete team",
+        "title": "70 Serial BoM & drawing",
+        "role": "PM",
+        "hours": 2.0
+      },
+      {
+        "seq": 7,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "10 Create item master",
+        "role": "CAD",
+        "hours": 2.0
+      },
+      {
+        "seq": 8,
+        "stepPath": "70 Serial BoM & drawing / 20 Create and release drawings",
+        "title": "D-FMEA up-to-date?",
+        "role": "CAD",
+        "hours": 8.0
+      },
+      {
+        "seq": 8,
+        "stepPath": "70 Serial BoM & drawing / 20 Create and release drawings",
+        "title": "D-FMEA up-to-date?",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 9,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "30 Release item master",
+        "role": "CAD",
+        "hours": 4.0
+      },
+      {
+        "seq": 9,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "30 Release item master",
+        "role": "LPE",
+        "hours": 1.0
+      },
+      {
+        "seq": 10,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "35 Milestone 1: Item master released",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 11,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "40 Create and release technical data sheet",
+        "role": "LPE",
+        "hours": 6.0
+      },
+      {
+        "seq": 12,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "60 Request drawing approval from customer/supplier",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 13,
+        "stepPath": "70 Serial BoM & drawing",
+        "title": "70 Approval AZ-drawing (internal/external)",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 14,
+        "stepPath": "70 Approval AZ-drawing (internal/external)",
+        "title": "80 Packaging",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 15,
+        "stepPath": "80 Packaging",
+        "title": "10 Define / update packaging data",
+        "role": "PLP",
+        "hours": 6.0
+      },
+      {
+        "seq": 16,
+        "stepPath": "80 Packaging",
+        "title": "20 Define packaging components",
+        "role": "PLP",
+        "hours": 4.0
+      },
+      {
+        "seq": 17,
+        "stepPath": "80 Packaging",
+        "title": "40 Plan packaging",
+        "role": "PLP",
+        "hours": 6.0
+      },
+      {
+        "seq": 18,
+        "stepPath": "80 Packaging",
+        "title": "50 Initiate/Create folding box label/layout",
+        "role": "PLP",
+        "hours": 2.0
+      },
+      {
+        "seq": 18,
+        "stepPath": "80 Packaging",
+        "title": "50 Initiate/Create folding box label/layout",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 19,
+        "stepPath": "80 Packaging",
+        "title": "70 Request layout / label approval from customer",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 20,
+        "stepPath": "80 Packaging",
+        "title": "80 Approve layout / label",
+        "role": "PLP",
+        "hours": 2.0
+      },
+      {
+        "seq": 20,
+        "stepPath": "80 Packaging",
+        "title": "80 Approve layout / label",
+        "role": "LPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 21,
+        "stepPath": "80 Approve layout / label",
+        "title": "90 Plant preparation",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 22,
+        "stepPath": "90 Plant preparation",
+        "title": "20 Set-up production and confirm readiness",
+        "role": "PPE",
+        "hours": 12.0
+      },
+      {
+        "seq": 23,
+        "stepPath": "90 Plant preparation / 20 Set-up production and confirm readiness",
+        "title": "P-FMEA documentation required and available?",
+        "role": "PPE",
+        "hours": 8.0
+      },
+      {
+        "seq": 24,
+        "stepPath": "90 Plant preparation / 20 Set-up production and confirm readiness",
+        "title": "Confirm readiness for production",
+        "role": "PPE",
+        "hours": 4.0
+      },
+      {
+        "seq": 25,
+        "stepPath": "20 Set-up production and confirm readiness",
+        "title": "100 Order finished goods",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 26,
+        "stepPath": "100 Order finished goods",
+        "title": "10 Create sales data",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 27,
+        "stepPath": "100 Order finished goods",
+        "title": "30 Maintain customer price in SAP",
+        "role": "KAM",
+        "hours": 2.0
+      },
+      {
+        "seq": 28,
+        "stepPath": "100 Order finished goods",
+        "title": "40 Create demands",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 29,
+        "stepPath": "40 Create demands",
+        "title": "110 Order production material",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 30,
+        "stepPath": "110 Order production material",
+        "title": "20 Set production order / Generate requirements for purchase orders",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 31,
+        "stepPath": "110 Order production material",
+        "title": "30 Procure production components",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 32,
+        "stepPath": "110 Order production material",
+        "title": "40 Order folding box",
+        "role": "PMP",
+        "hours": 4.0
+      },
+      {
+        "seq": 33,
+        "stepPath": "110 Order production material",
+        "title": "50 Confirm income of folding box",
+        "role": "PLP",
+        "hours": 3.0
+      },
+      {
+        "seq": 34,
+        "stepPath": "110 Order production material",
+        "title": "60 Manufacture parts and book into quarantine store",
+        "role": "PLP",
+        "hours": 0.5
+      },
+      {
+        "seq": 35,
+        "stepPath": "110 Order production material",
+        "title": "75 Milestone 2: Parts manufactured",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 36,
+        "stepPath": "75 Milestone 2: Parts manufactured",
+        "title": "120 Product Release",
+        "role": "PM",
+        "hours": 4.0
+      },
+      {
+        "seq": 37,
+        "stepPath": "120 Product Release",
+        "title": "10 Create (internal) product quality release",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 38,
+        "stepPath": "120 Product Release / 10 Create (internal) product quality release",
+        "title": "Quality documents available?",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 39,
+        "stepPath": "120 Product Release / 10 Create (internal) product quality release",
+        "title": "Internal audit report available?",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 40,
+        "stepPath": "120 Product Release",
+        "title": "20 Confirm sampling requirements",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 41,
+        "stepPath": "120 Product Release",
+        "title": "30 Create sampling documents",
+        "role": "PQE",
+        "hours": 2.0
+      },
+      {
+        "seq": 42,
+        "stepPath": "120 Product Release",
+        "title": "50 Approve samples",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 43,
+        "stepPath": "120 Product Release",
+        "title": "70 Store released documents in CDB and inform \"initiator\"",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 44,
+        "stepPath": "120 Product Release / 70 Store released documents in CDB and inform \"initiator\"",
+        "title": "P-FMEA and Control Plan (PLP) documentation required and available?",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 45,
+        "stepPath": "120 Product Release / 70 Store released documents in CDB and inform \"initiator\"",
+        "title": "Internal product release given?",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 46,
+        "stepPath": "120 Product Release / 70 Store released documents in CDB and inform \"initiator\"",
+        "title": "Optional: external product release (PPAP / PPF) given?",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 47,
+        "stepPath": "120 Product Release / 70 Store released documents in CDB and inform \"initiator\"",
+        "title": "Optional: product release for purchased parts (only if BOM with new purchased parts) given?",
+        "role": "SQD",
+        "hours": 4.0
+      },
+      {
+        "seq": 48,
+        "stepPath": "120 Product Release",
+        "title": "150 Release parts from quarantine store and ship parts to central warehouse",
+        "role": "PQE",
+        "hours": 4.0
+      },
+      {
+        "seq": 49,
+        "stepPath": "120 Product Release",
+        "title": "200 Close NPI",
+        "role": "PM",
+        "hours": 2.0
+      }
+    ]
+  }
+}

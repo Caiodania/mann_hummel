@@ -1,11 +1,24 @@
 import express, { type Request, type Response, type NextFunction } from 'express'
 import cors from 'cors'
+import { ZodError } from 'zod'
 import { prisma } from './db.js'
 import { getAppState } from './state.js'
+import { requireApiKey } from './auth.js'
+import {
+  activityMoveSchema,
+  activitySchema,
+  nominationSchema,
+  projectSchema,
+  spanPatchSchema,
+  stagePatchSchema,
+  submissionCreateSchema,
+  submissionUpdateSchema,
+} from './validation.js'
 
 const app = express()
 app.use(cors())
 app.use(express.json({ limit: '5mb' }))
+app.use(requireApiKey) // opt-in shared-secret auth on mutating routes
 
 const wrap =
   (fn: (req: Request, res: Response) => Promise<unknown>) =>
@@ -22,7 +35,7 @@ app.get('/api/health', (_req, res) => res.json({ ok: true }))
 // ---- projects ----
 // upsert a whole project (scalars + players + submissions + nomination)
 app.post('/api/projects', wrap(async (req, res) => {
-  const p = req.body
+  const p = projectSchema.parse(req.body)
   await prisma.$transaction(async (tx) => {
     const scalars = {
       code: p.code,
@@ -46,7 +59,7 @@ app.post('/api/projects', wrap(async (req, res) => {
     await tx.projectPlayer.deleteMany({ where: { projectId: p.id } })
     if (Array.isArray(p.players) && p.players.length)
       await tx.projectPlayer.createMany({
-        data: p.players.map((pl: any) => ({
+        data: p.players.map((pl) => ({
           projectId: p.id,
           memberId: pl.memberId,
           role: pl.role,
@@ -57,7 +70,7 @@ app.post('/api/projects', wrap(async (req, res) => {
     await tx.submission.deleteMany({ where: { projectId: p.id } })
     if (Array.isArray(p.submissions) && p.submissions.length)
       await tx.submission.createMany({
-        data: p.submissions.map((s: any) => ({
+        data: p.submissions.map((s) => ({
           projectId: p.id,
           n: s.n,
           deliveryDate: s.deliveryDate,
@@ -87,17 +100,19 @@ app.delete('/api/projects/:id', wrap(async (req, res) => {
 }))
 
 app.patch('/api/projects/:id/stage', wrap(async (req, res) => {
+  const { stage } = stagePatchSchema.parse(req.body)
   await prisma.project.update({
     where: { id: req.params.id },
-    data: { stage: req.body.stage },
+    data: { stage },
   })
   res.json(await getAppState())
 }))
 
 app.patch('/api/projects/:id/span', wrap(async (req, res) => {
+  const { startWeek, endWeek } = spanPatchSchema.parse(req.body)
   await prisma.project.update({
     where: { id: req.params.id },
-    data: { startWeek: req.body.startWeek, endWeek: req.body.endWeek },
+    data: { startWeek, endWeek },
   })
   res.json(await getAppState())
 }))
@@ -105,6 +120,7 @@ app.patch('/api/projects/:id/span', wrap(async (req, res) => {
 // ---- submissions ----
 app.post('/api/projects/:id/submissions', wrap(async (req, res) => {
   const projectId = req.params.id
+  const body = submissionCreateSchema.parse(req.body)
   const max = await prisma.submission.aggregate({
     where: { projectId },
     _max: { n: true },
@@ -114,21 +130,22 @@ app.post('/api/projects/:id/submissions', wrap(async (req, res) => {
     data: {
       projectId,
       n,
-      deliveryDate: req.body.deliveryDate,
-      valueMio: req.body.valueMio,
-      skamId: req.body.skamId,
+      deliveryDate: body.deliveryDate,
+      valueMio: body.valueMio,
+      skamId: body.skamId,
     },
   })
   res.json(await getAppState())
 }))
 
 app.put('/api/projects/:id/submissions/:n', wrap(async (req, res) => {
+  const body = submissionUpdateSchema.parse(req.body)
   await prisma.submission.updateMany({
     where: { projectId: req.params.id, n: Number(req.params.n) },
     data: {
-      deliveryDate: req.body.deliveryDate,
-      valueMio: req.body.valueMio,
-      skamId: req.body.skamId,
+      deliveryDate: body.deliveryDate,
+      valueMio: body.valueMio,
+      skamId: body.skamId,
     },
   })
   res.json(await getAppState())
@@ -158,12 +175,7 @@ app.delete('/api/projects/:id/submissions/:n', wrap(async (req, res) => {
 // ---- nomination ----
 app.put('/api/projects/:id/nomination', wrap(async (req, res) => {
   const projectId = req.params.id
-  const data = {
-    sopDate: req.body.sopDate,
-    koDate: req.body.koDate,
-    valueMio: req.body.valueMio,
-    type: req.body.type,
-  }
+  const data = nominationSchema.parse(req.body)
   await prisma.nomination.upsert({
     where: { projectId },
     create: { projectId, ...data },
@@ -174,7 +186,7 @@ app.put('/api/projects/:id/nomination', wrap(async (req, res) => {
 
 // ---- activities ----
 app.post('/api/activities', wrap(async (req, res) => {
-  const a = req.body
+  const a = activitySchema.parse(req.body)
   const data = {
     projectId: a.projectId,
     memberId: a.memberId,
@@ -198,19 +210,32 @@ app.delete('/api/activities/:id', wrap(async (req, res) => {
 }))
 
 app.patch('/api/activities/:id/move', wrap(async (req, res) => {
-  const data: { week: string; projectId: string; day?: string } = {
-    week: req.body.week,
-    projectId: req.body.projectId,
+  const body = activityMoveSchema.parse(req.body)
+  // Distinguish "day not sent" (leave it alone) from "day sent as null/empty"
+  // (clear it, i.e. back to a whole-week activity). Only assign the column when
+  // the key was actually present in the request.
+  const data: { week: string; projectId: string; day?: string | null } = {
+    week: body.week,
+    projectId: body.projectId,
   }
-  if (req.body.day) data.day = req.body.day
+  if (body.day !== undefined) data.day = body.day
   await prisma.activity.update({ where: { id: req.params.id }, data })
   res.json(await getAppState())
 }))
 
-// error handler
+// error handler — log full detail on the server, return a sanitized body.
+// Prisma error messages can include absolute filesystem paths and query
+// internals, so never echo err.message to the client in production (item 2).
 app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
+  if (err instanceof ZodError) {
+    // Validation issues describe the caller's own payload — safe to return.
+    return res.status(400).json({ error: 'Validation failed', issues: err.issues })
+  }
   console.error(err)
-  res.status(500).json({ error: String((err as Error)?.message ?? err) })
+  const body: { error: string; detail?: string } = { error: 'Internal Server Error' }
+  if (process.env.NODE_ENV !== 'production')
+    body.detail = String((err as Error)?.message ?? err)
+  res.status(500).json(body)
 })
 
 // Use a dedicated var (NOT the generic PORT, which Vite/preview tooling sets to

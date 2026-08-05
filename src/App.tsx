@@ -12,11 +12,32 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'gantt', label: 'Gantt' },
 ]
 
+function ErrorToast() {
+  const { syncError, clearError } = useStore()
+  if (!syncError) return null
+  return (
+    <div className="toast toast-error" role="alert">
+      <span className="toast-icon" aria-hidden>
+        ⚠
+      </span>
+      <span className="toast-msg">{syncError}</span>
+      <button
+        className="toast-close"
+        onClick={clearError}
+        aria-label="Dispensar aviso"
+      >
+        ×
+      </button>
+    </div>
+  )
+}
+
 function Shell() {
   const [tab, setTab] = useState<Tab>('carga')
   const { loaded } = useStore()
   return (
     <div className="app">
+      <ErrorToast />
       <header className="topbar">
         <div className="logo">
           <span className="mann">MANN+</span>

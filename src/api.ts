@@ -3,10 +3,17 @@ import type { AppState } from './types'
 // All calls go through the Vite dev proxy (/api -> http://localhost:3001).
 const BASE = '/api'
 
+// Optional shared secret — only needed if the server sets API_KEY (see
+// server/src/auth.ts). Configure via VITE_API_KEY in the frontend env.
+const API_KEY = import.meta.env.VITE_API_KEY as string | undefined
+
 async function req<T>(path: string, method = 'GET', body?: unknown): Promise<T> {
+  const headers: Record<string, string> = {}
+  if (body) headers['Content-Type'] = 'application/json'
+  if (API_KEY) headers['x-api-key'] = API_KEY
   const res = await fetch(BASE + path, {
     method,
-    headers: body ? { 'Content-Type': 'application/json' } : undefined,
+    headers,
     body: body ? JSON.stringify(body) : undefined,
   })
   if (!res.ok) throw new Error(`${method} ${path} -> ${res.status}`)
