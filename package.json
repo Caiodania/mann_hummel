@@ -8,7 +8,7 @@
     "dev:web": "vite",
     "setup": "npm --prefix server install && npm --prefix server run prisma:generate && npm --prefix server run db:push && npm --prefix server run db:seed",
     "build": "tsc -b && vite build",
-    "render-build": "npm ci && npm run build && npm --prefix server ci && npm --prefix server run prisma:generate && npm --prefix server run db:push",
+    "render-build": "npm ci --include=dev && npm run build && npm --prefix server ci --include=dev && npm --prefix server run prisma:generate && npm --prefix server run db:push",
     "start": "npm --prefix server start",
     "lint": "oxlint",
     "preview": "vite preview"
