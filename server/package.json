@@ -10,7 +10,8 @@
     "prisma:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev --name init",
-    "db:seed": "tsx prisma/seed.ts"
+    "db:seed": "tsx prisma/seed.ts",
+    "db:seed:if-empty": "tsx prisma/seed-if-empty.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
