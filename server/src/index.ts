@@ -14,6 +14,7 @@ import {
   projectSchema,
   spanPatchSchema,
   stagePatchSchema,
+  statusPatchSchema,
   submissionCreateSchema,
   submissionUpdateSchema,
 } from './validation.js'
@@ -52,6 +53,7 @@ app.post('/api/projects', wrap(async (req, res) => {
       risk: p.risk,
       reading: p.reading,
       valueMio: p.valueMio ?? 0,
+      copiedToPipeline: p.copiedToPipeline ?? false,
     }
     await tx.project.upsert({
       where: { id: p.id },
@@ -198,6 +200,7 @@ app.post('/api/activities', wrap(async (req, res) => {
     title: a.title,
     role: a.role,
     loadDays: a.loadDays,
+    status: a.status,
   }
   await prisma.activity.upsert({
     where: { id: a.id },
@@ -209,6 +212,12 @@ app.post('/api/activities', wrap(async (req, res) => {
 
 app.delete('/api/activities/:id', wrap(async (req, res) => {
   await prisma.activity.delete({ where: { id: req.params.id } })
+  res.json(await getAppState())
+}))
+
+app.patch('/api/activities/:id/status', wrap(async (req, res) => {
+  const { status } = statusPatchSchema.parse(req.body)
+  await prisma.activity.update({ where: { id: req.params.id }, data: { status } })
   res.json(await getAppState())
 }))
 

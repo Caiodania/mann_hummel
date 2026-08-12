@@ -7,13 +7,15 @@ import { z } from 'zod'
 
 const STAGES = [
   'Agendado',
-  'Task Done',
-  'PER/NQC',
+  'PER',
+  'NQC (Submissão)',
   'Gate Review',
   'NQC',
-  'Nomination',
+  'Nominated',
+  'Development / Industrialization',
   'On Hold',
-  'Lost / Cancel',
+  'Lost',
+  'Cancel',
 ] as const
 
 const ROLES = [
@@ -26,6 +28,7 @@ const READINGS = ['clara', 'confirmar'] as const
 const TYPES = ['STD', 'NPI'] as const
 const NPI_SUBTYPES = ['G', 'H', 'I', 'P', 'X'] as const
 const WEEKDAYS = ['SEG', 'TER', 'QUA', 'QUI', 'SEX'] as const
+const STATUSES = ['execution', 'delayed', 'concluded'] as const
 
 // week key like "2026-W28"
 const weekKey = z.string().regex(/^\d{4}-W\d{1,2}$/, 'invalid week key (expected YYYY-Www)')
@@ -37,6 +40,10 @@ export const riskSchema = z.enum(RISKS)
 export const readingSchema = z.enum(READINGS)
 export const typeSchema = z.enum(TYPES)
 export const roleSchema = z.enum(ROLES)
+export const statusSchema = z.enum(STATUSES)
+// An activity is one discrete unit of work — capped to half or a full day;
+// anything bigger must be split into another activity by the coordinator.
+export const loadDaysSchema = z.union([z.literal(0.5), z.literal(1)])
 
 const playerSchema = z.object({
   memberId: id,
@@ -78,10 +85,12 @@ export const projectSchema = z
     players: z.array(playerSchema).optional(),
     submissions: z.array(submissionWithNSchema).optional(),
     nomination: nominationSchema.nullish(),
+    copiedToPipeline: z.boolean().optional(),
   })
   .strict()
 
 export const stagePatchSchema = z.object({ stage: stageSchema })
+export const statusPatchSchema = z.object({ status: statusSchema })
 
 export const spanPatchSchema = z.object({
   startWeek: weekKey,
@@ -106,7 +115,8 @@ export const activitySchema = z.object({
   day: daySchema,
   title: z.string().min(1),
   role: roleSchema,
-  loadDays: z.number().nonnegative(),
+  loadDays: loadDaysSchema,
+  status: statusSchema.optional(),
 })
 
 // `day` is intentionally optional-nullable so callers can either omit it

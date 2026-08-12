@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { useStore } from '../store'
+import { weeksBetween } from '../lib/weeks'
 import type { Project } from '../types'
 import { Avatar, Modal, RiskBadge, TypeChip, fmtMio } from './ui'
 
@@ -29,6 +30,9 @@ export function ProjectDetail({
   )
   const totalDays = acts.reduce((s, a) => s + a.loadDays, 0)
   const totalHours = project.players.reduce((s, pl) => s + pl.hours, 0)
+  const durationWeeks = weeksBetween(project.startWeek, project.endWeek) + 1
+  const typeLabel =
+    project.type === 'NPI' ? `NPI-${project.npiSubtype ?? '?'}` : 'EP'
 
   return (
     <Modal
@@ -46,6 +50,11 @@ export function ProjectDetail({
         </>
       }
     >
+      <div className="duration-highlight">
+        <span className="duration-value">{durationWeeks} semanas</span>
+        <span className="duration-type">{typeLabel}</span>
+      </div>
+
       <div
         className="p-meta"
         style={{ display: 'flex', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}

@@ -41,4 +41,6 @@ export const api = {
   deleteActivity: (id: string) => req<AppState>(`/activities/${id}`, 'DELETE'),
   moveActivity: (id: string, body: unknown) =>
     req<AppState>(`/activities/${id}/move`, 'PATCH', body),
+  setActivityStatus: (id: string, status: string) =>
+    req<AppState>(`/activities/${id}/status`, 'PATCH', { status }),
 }

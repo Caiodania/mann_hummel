@@ -13,6 +13,7 @@ import type {
   Nomination,
   Project,
   Stage,
+  Status,
   Submission,
 } from './types'
 import { api } from './api'
@@ -47,6 +48,7 @@ interface Store {
     projectId: string,
     day?: Activity['day'] | null,
   ) => void
+  setActivityStatus: (id: string, status: Status) => void
   setProjectSpan: (id: string, startWeek: string, endWeek: string) => void
   reset: () => void
   /** Last sync/connection error shown to the user, or null. */
@@ -144,18 +146,20 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         projects: s.projects.map((p) => (p.id === id ? fn(p) : p)),
       }))
 
+    const doUpsertProject = (p: Project) => {
+      optimistic((s) => ({
+        ...s,
+        projects: s.projects.some((x) => x.id === p.id)
+          ? s.projects.map((x) => (x.id === p.id ? p : x))
+          : [...s.projects, p],
+      }))
+      sync(api.upsertProject(p))
+    }
+
     return {
       state,
       loaded,
-      upsertProject: (p) => {
-        optimistic((s) => ({
-          ...s,
-          projects: s.projects.some((x) => x.id === p.id)
-            ? s.projects.map((x) => (x.id === p.id ? p : x))
-            : [...s.projects, p],
-        }))
-        sync(api.upsertProject(p))
-      },
+      upsertProject: doUpsertProject,
       deleteProject: (id) => {
         optimistic((s) => ({
           ...s,
@@ -227,6 +231,40 @@ export function StoreProvider({ children }: { children: ReactNode }) {
           ),
         }))
         sync(api.moveActivity(id, { week, projectId, day }))
+      },
+      setActivityStatus: (id, status) => {
+        const activity = state.activities.find((a) => a.id === id)
+        optimistic((s) => ({
+          ...s,
+          activities: s.activities.map((a) =>
+            a.id === id ? { ...a, status } : a,
+          ),
+        }))
+        sync(api.setActivityStatus(id, status))
+
+        // Cotação → Pipeline is one-way: once every activity on a project is
+        // concluded, copy it into the Pipeline at "Agendado" (the original
+        // stays in Cotação, its history untouched) — but only once.
+        if (status === 'concluded' && activity) {
+          const project = state.projects.find((p) => p.id === activity.projectId)
+          const siblings = state.activities.filter(
+            (a) => a.projectId === activity.projectId,
+          )
+          const allConcluded =
+            siblings.length > 0 &&
+            siblings.every((a) => a.id === id || a.status === 'concluded')
+          if (project && !project.copiedToPipeline && allConcluded) {
+            doUpsertProject({ ...project, copiedToPipeline: true })
+            doUpsertProject({
+              ...project,
+              id: uid(),
+              stage: 'Agendado',
+              copiedToPipeline: false,
+              submissions: [],
+              nomination: undefined,
+            })
+          }
+        }
       },
       setProjectSpan: (id, startWeek, endWeek) => {
         patchProject(id, (p) => ({ ...p, startWeek, endWeek }))

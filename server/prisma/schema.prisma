@@ -23,18 +23,19 @@ model Member {
 }
 
 model Project {
-  id         String  @id
-  code       String
-  name       String?
-  client     String
-  type       String // 'STD' | 'NPI'
-  npiSubtype String? // 'G'|'H'|'I'|'P'|'X'
-  startWeek  String
-  endWeek    String
-  stage      String
-  risk       String // 'baixo'|'medio'|'alto'
-  reading    String // 'clara'|'confirmar'
-  valueMio   Float   @default(0)
+  id               String  @id
+  code             String
+  name             String?
+  client           String
+  type             String // 'STD' | 'NPI'
+  npiSubtype       String? // 'G'|'H'|'I'|'P'|'X'
+  startWeek        String
+  endWeek          String
+  stage            String
+  risk             String // 'baixo'|'medio'|'alto'
+  reading          String // 'clara'|'confirmar'
+  valueMio         Float   @default(0)
+  copiedToPipeline Boolean @default(false)
 
   players     ProjectPlayer[]
   activities  Activity[]
@@ -65,6 +66,7 @@ model Activity {
   title     String
   role      String
   loadDays  Float
+  status    String  @default("execution") // 'execution' | 'delayed' | 'concluded'
 
   @@index([projectId])
   @@index([memberId])

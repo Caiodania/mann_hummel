@@ -15,11 +15,17 @@ import { ProjectDetail } from './ProjectDetail'
 import { weekKeyFromDate } from '../lib/weeks'
 
 const STAGE_DESC: Partial<Record<Stage, string>> = {
-  'PER/NQC': 'Submissões numeradas por projeto',
-  Nomination: 'SOP, KO, valor e tipo (EP/NPI)',
+  PER: 'Submissões numeradas por projeto',
+  'NQC (Submissão)': 'Submissões numeradas por projeto',
+  Nominated: 'SOP, KO, valor e tipo (EP/NPI)',
+  'Development / Industrialization': 'Projetos em desenvolvimento/industrialização — soma no Turn Over',
   'On Hold': 'Projetos parados ou sem ação no momento',
-  'Lost / Cancel': 'Projetos perdidos ou cancelados (0% na métrica)',
+  Lost: 'Projetos perdidos (0% na métrica)',
+  Cancel: 'Projetos cancelados (0% na métrica)',
 }
+
+/** Calendar year a project belongs to, derived from its start week ("2026-W31" → 2026). */
+const yearOf = (p: Project) => Number(p.startWeek.split('-W')[0])
 
 export function PipelineBoard() {
   const { state, moveStage } = useStore()
@@ -27,6 +33,7 @@ export function PipelineBoard() {
   const [riskFilter, setRiskFilter] = useState<Risk[]>([])
   const [readingFilter, setReadingFilter] = useState<Reading[]>([])
   const [clientFilter, setClientFilter] = useState('')
+  const [yearFilter, setYearFilter] = useState('')
   const [dragStage, setDragStage] = useState<Stage | null>(null)
 
   const [editingProject, setEditingProject] = useState<Project | null>(null)
@@ -38,12 +45,17 @@ export function PipelineBoard() {
     () => [...new Set(state.projects.map((p) => p.client))].sort(),
     [state.projects],
   )
+  const years = useMemo(
+    () => [...new Set(state.projects.map(yearOf))].sort(),
+    [state.projects],
+  )
 
   const q = search.trim().toLowerCase()
   const visible = state.projects.filter((p) => {
     if (riskFilter.length && !riskFilter.includes(p.risk)) return false
     if (readingFilter.length && !readingFilter.includes(p.reading)) return false
     if (clientFilter && p.client !== clientFilter) return false
+    if (yearFilter && yearOf(p) !== Number(yearFilter)) return false
     if (q && !p.code.toLowerCase().includes(q) && !p.client.toLowerCase().includes(q))
       return false
     return true
@@ -51,8 +63,8 @@ export function PipelineBoard() {
 
   const byStage = (s: Stage) => visible.filter((p) => p.stage === s)
 
-  // KPIs — gross portfolio & count include every stage (incl. Lost / Cancel);
-  // Métrica master is weighted by stage probability, so Lost / Cancel adds 0.
+  // KPIs — gross portfolio & count include every stage (incl. Lost/Cancel);
+  // Métrica master is weighted by stage probability, so Lost/Cancel adds 0.
   const gross = visible.reduce((s, p) => s + p.valueMio, 0)
   const atRisk = visible
     .filter((p) => p.risk === 'alto')
@@ -61,12 +73,16 @@ export function PipelineBoard() {
     (s, p) => s + p.valueMio * STAGE_WEIGHT[p.stage],
     0,
   )
+  // Turn Over — sum of value for projects that reached Development / Industrialization.
+  const turnOver = visible
+    .filter((p) => p.stage === 'Development / Industrialization')
+    .reduce((s, p) => s + p.valueMio, 0)
 
   const drop = (stage: Stage, id: string) => {
     const proj = state.projects.find((p) => p.id === id)
     setDragStage(null)
     if (!proj || proj.stage === stage) return
-    if (stage === 'Nomination' && !proj.nomination) {
+    if (stage === 'Nominated' && !proj.nomination) {
       // capture nomination data before committing the move
       setNominationFor(proj)
       return
@@ -83,6 +99,7 @@ export function PipelineBoard() {
         <Kpi label="Métrica master" value={fmtMio(master)} />
         <Kpi label="Carteira bruta" value={fmtMio(gross)} />
         <Kpi label="Valor em risco" value={fmtMio(atRisk)} alert={atRisk > 0} />
+        <Kpi label="Turn over" value={fmtMio(turnOver)} />
         <Kpi label="Projetos" value={visible.length} />
       </div>
 
@@ -146,13 +163,33 @@ export function PipelineBoard() {
             ))}
           </select>
         </div>
-        {(riskFilter.length || readingFilter.length || clientFilter || search) && (
+        <div className="filter-group">
+          <span className="filter-label">Ano</span>
+          <select
+            className="btn"
+            value={yearFilter}
+            onChange={(e) => setYearFilter(e.target.value)}
+          >
+            <option value="">Todos</option>
+            {years.map((y) => (
+              <option key={y} value={y}>
+                {y}
+              </option>
+            ))}
+          </select>
+        </div>
+        {(riskFilter.length ||
+          readingFilter.length ||
+          clientFilter ||
+          yearFilter ||
+          search) && (
           <button
             className="btn sm"
             onClick={() => {
               setRiskFilter([])
               setReadingFilter([])
               setClientFilter('')
+              setYearFilter('')
               setSearch('')
             }}
           >
@@ -281,7 +318,7 @@ function PipelineCard({
         <span className="load-chip">leitura: {p.reading}</span>
       </div>
 
-      {p.stage === 'PER/NQC' && (
+      {(p.stage === 'PER' || p.stage === 'NQC (Submissão)') && (
         <div className="sub-list">
           {p.submissions.map((s) => (
             <div key={s.n} className="sub-row">
@@ -305,7 +342,7 @@ function PipelineCard({
         </div>
       )}
 
-      {p.stage === 'Nomination' && p.nomination && (
+      {p.stage === 'Nominated' && p.nomination && (
         <div className="nom-box">
           <span>
             SOP: <b>{p.nomination.sopDate}</b>
@@ -478,7 +515,7 @@ function NominationModal({
                   weekKeyFromDate(new Date(nom.sopDate)),
                 )
               }
-              moveStage(project.id, 'Nomination')
+              moveStage(project.id, 'Nominated')
               onClose()
             }}
           >

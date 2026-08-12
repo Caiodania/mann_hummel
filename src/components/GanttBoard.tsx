@@ -26,29 +26,41 @@ interface DragState {
   origEnd: string
 }
 
+const GANTT_STAGES = ['Nominated', 'Development / Industrialization'] as const
+
+/** Calendar year a project belongs to, derived from its start week ("2026-W31" → 2026). */
+const yearOf = (p: Project) => Number(p.startWeek.split('-W')[0])
+
 export function GanttBoard() {
   const { state, setProjectSpan } = useStore()
   const [search, setSearch] = useState('')
   const [riskFilter, setRiskFilter] = useState<Risk[]>([])
   const [readingFilter, setReadingFilter] = useState<Reading[]>([])
   const [clientFilter, setClientFilter] = useState('')
+  const [yearFilter, setYearFilter] = useState('')
 
   const clients = useMemo(
     () => [...new Set(state.projects.map((p) => p.client))].sort(),
     [state.projects],
   )
+  const years = useMemo(
+    () => [...new Set(state.projects.map(yearOf))].sort(),
+    [state.projects],
+  )
 
-  // Gantt shows only projects currently in the Nomination stage, further
-  // narrowed by the toolbar filters.
+  // Gantt covers the continuous post-nomination timeline: Nominated through
+  // Development / Industrialization, further narrowed by the toolbar filters.
   const q = search.trim().toLowerCase()
   const projects = useMemo(
     () =>
       state.projects.filter((p) => {
-        if (p.stage !== 'Nomination') return false
+        if (!GANTT_STAGES.includes(p.stage as (typeof GANTT_STAGES)[number]))
+          return false
         if (riskFilter.length && !riskFilter.includes(p.risk)) return false
         if (readingFilter.length && !readingFilter.includes(p.reading))
           return false
         if (clientFilter && p.client !== clientFilter) return false
+        if (yearFilter && yearOf(p) !== Number(yearFilter)) return false
         if (
           q &&
           !p.code.toLowerCase().includes(q) &&
@@ -57,11 +69,12 @@ export function GanttBoard() {
           return false
         return true
       }),
-    [state.projects, riskFilter, readingFilter, clientFilter, q],
+    [state.projects, riskFilter, readingFilter, clientFilter, yearFilter, q],
   )
 
   // Same formulas as the Pipeline KPI bar, scoped to this tab's own project
-  // set (Nomination stage + active filters) so the two tabs read consistently.
+  // set (Nominated + Development/Industrialization + active filters) so the
+  // two tabs read consistently.
   const gross = projects.reduce((s, p) => s + p.valueMio, 0)
   const atRisk = projects
     .filter((p) => p.risk === 'alto')
@@ -70,6 +83,9 @@ export function GanttBoard() {
     (s, p) => s + p.valueMio * STAGE_WEIGHT[p.stage],
     0,
   )
+  const turnOver = projects
+    .filter((p) => p.stage === 'Development / Industrialization')
+    .reduce((s, p) => s + p.valueMio, 0)
 
   const coverKeys = useMemo(() => {
     const keys: string[] = []
@@ -160,6 +176,7 @@ export function GanttBoard() {
         <Kpi label="Métrica master" value={fmtMio(master)} />
         <Kpi label="Carteira bruta" value={fmtMio(gross)} />
         <Kpi label="Valor em risco" value={fmtMio(atRisk)} alert={atRisk > 0} />
+        <Kpi label="Turn over" value={fmtMio(turnOver)} />
         <Kpi label="Projetos" value={projects.length} />
       </div>
 
@@ -220,13 +237,33 @@ export function GanttBoard() {
             ))}
           </select>
         </div>
-        {(riskFilter.length || readingFilter.length || clientFilter || search) && (
+        <div className="filter-group">
+          <span className="filter-label">Ano</span>
+          <select
+            className="btn"
+            value={yearFilter}
+            onChange={(e) => setYearFilter(e.target.value)}
+          >
+            <option value="">Todos</option>
+            {years.map((y) => (
+              <option key={y} value={y}>
+                {y}
+              </option>
+            ))}
+          </select>
+        </div>
+        {(riskFilter.length ||
+          readingFilter.length ||
+          clientFilter ||
+          yearFilter ||
+          search) && (
           <button
             className="btn sm"
             onClick={() => {
               setRiskFilter([])
               setReadingFilter([])
               setClientFilter('')
+              setYearFilter('')
               setSearch('')
             }}
           >
@@ -245,9 +282,10 @@ export function GanttBoard() {
       <div className="info-banner">
         <strong>Cronograma por projeto</strong>
         <p>
-          Exibindo apenas projetos na etapa <b>Nomination</b>. Arraste as
-          barras para mover, use as alças laterais para redimensionar, clique
-          para ver detalhes. Linha verde = hoje.
+          Exibindo projetos nas etapas <b>Nominated</b> e{' '}
+          <b>Development / Industrialization</b>. Arraste as barras para
+          mover, use as alças laterais para redimensionar, clique para ver
+          detalhes. Linha verde = hoje.
         </p>
       </div>
 
@@ -326,8 +364,9 @@ export function GanttBoard() {
         </div>
         {projects.length === 0 && (
           <div className="empty">
-            Nenhum projeto na etapa <b>Nomination</b> no momento. Mova um projeto
-            para Nomination no Pipeline para vê-lo aqui.
+            Nenhum projeto em <b>Nominated</b> ou{' '}
+            <b>Development / Industrialization</b> no momento. Mova um
+            projeto para uma dessas etapas no Pipeline para vê-lo aqui.
           </div>
         )}
       </div>

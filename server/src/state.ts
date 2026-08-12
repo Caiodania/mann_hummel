@@ -36,6 +36,7 @@ export async function getAppState() {
       risk: p.risk,
       reading: p.reading,
       valueMio: p.valueMio,
+      copiedToPipeline: p.copiedToPipeline,
       players: p.players.map((pl) => ({
         memberId: pl.memberId,
         role: pl.role,
@@ -65,6 +66,7 @@ export async function getAppState() {
       role: a.role,
       memberId: a.memberId,
       loadDays: a.loadDays,
+      status: a.status,
     })),
   }
 }

@@ -2,22 +2,28 @@ import { useMemo, useState, type ReactNode } from 'react'
 import { useStore, uid } from '../store'
 import { useWeekRail } from '../lib/useWeekRail'
 import {
+  LOAD_DAYS_OPTIONS,
   ROLES,
+  STATUS_LABEL,
+  STATUSES,
   WEEKDAYS,
   type Activity,
+  type LoadDays,
   type Project,
   type Role,
+  type Status,
   type Weekday,
 } from '../types'
-import { Avatar, Modal, RiskBadge, RoleBadge, RolePills } from './ui'
-import { ProjectModal } from './ProjectModal'
+import { Avatar, memberKey, Modal, RiskBadge, RoleBadge, RolePills } from './ui'
+import { ProjectModal, emptyProject } from './ProjectModal'
 import { ProjectDetail } from './ProjectDetail'
 
 const CAPACITY_DAYS = 5 // work-days per member per week before overload
 const DAY_W = 106 // px per weekday sub-column
 
 export function TeamLoadBoard() {
-  const { state, moveActivity, upsertActivity, deleteActivity } = useStore()
+  const { state, moveActivity, upsertActivity, deleteActivity, setActivityStatus } =
+    useStore()
   const coverKeys = useMemo(() => {
     const keys: string[] = []
     for (const p of state.projects) keys.push(p.startWeek, p.endWeek)
@@ -26,11 +32,33 @@ export function TeamLoadBoard() {
   }, [state.projects, state.activities])
   const { weeks, onScroll } = useWeekRail(2, 12, coverKeys)
   const [search, setSearch] = useState('')
-  const [roleFilter, setRoleFilter] = useState<Role[]>([])
+  // mixes role codes ("PM") and member keys ("m:m1") from drilling into a role
+  const [teamFilter, setTeamFilter] = useState<string[]>([])
   const [dragOver, setDragOver] = useState<string | null>(null)
   const [editing, setEditing] = useState<Activity | null>(null)
   const [editingProject, setEditingProject] = useState<Project | null>(null)
   const [detailProject, setDetailProject] = useState<Project | null>(null)
+  const [showConcluded, setShowConcluded] = useState(false)
+
+  // A project's "cotação" is done once every activity it has is concluded —
+  // keep it out of the way (without deleting any history) unless asked to
+  // show it, so the list doesn't keep growing as work finishes.
+  const concludedProjectIds = useMemo(() => {
+    const byProject = new Map<string, Activity[]>()
+    for (const a of state.activities) {
+      const arr = byProject.get(a.projectId)
+      if (arr) arr.push(a)
+      else byProject.set(a.projectId, [a])
+    }
+    const ids = new Set<string>()
+    for (const [projectId, acts] of byProject)
+      if (acts.length > 0 && acts.every((a) => a.status === 'concluded'))
+        ids.add(projectId)
+    return ids
+  }, [state.activities])
+  const visibleProjects = showConcluded
+    ? state.projects
+    : state.projects.filter((p) => !concludedProjectIds.has(p.id))
 
   const memberById = useMemo(
     () => new Map(state.members.map((m) => [m.id, m])),
@@ -43,7 +71,12 @@ export function TeamLoadBoard() {
 
   const q = search.trim().toLowerCase()
   const matches = (a: Activity) => {
-    if (roleFilter.length && !roleFilter.includes(a.role)) return false
+    if (
+      teamFilter.length &&
+      !teamFilter.includes(a.role) &&
+      !teamFilter.includes(memberKey(a.memberId))
+    )
+      return false
     if (!q) return true
     const p = projectById.get(a.projectId)
     const m = memberById.get(a.memberId)
@@ -97,16 +130,8 @@ export function TeamLoadBoard() {
       topDays = d
       topMember = memberById.get(mid)?.name.split(' ')[0] ?? '—'
     }
-  const toggleRole = (role: Role) =>
-    setRoleFilter((f) =>
-      f.includes(role) ? f.filter((x) => x !== role) : [...f, role],
-    )
-
-  // only show role pills for roles the team actually has staffed
-  const staffedRoles = useMemo(
-    () => ROLES.filter((r) => state.members.some((m) => m.role === r)),
-    [state.members],
-  )
+  const toggleTeamFilter = (key: string) =>
+    setTeamFilter((f) => (f.includes(key) ? f.filter((x) => x !== key) : [...f, key]))
 
   const cols = `220px repeat(${weeks.length * WEEKDAYS.length}, ${DAY_W}px)`
 
@@ -128,18 +153,39 @@ export function TeamLoadBoard() {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        <RolePills roles={staffedRoles} selected={roleFilter} onToggle={toggleRole} />
-        {(roleFilter.length > 0 || q) && (
+        <RolePills
+          members={state.members}
+          selected={teamFilter}
+          onToggle={toggleTeamFilter}
+        />
+        {(teamFilter.length > 0 || q) && (
           <button
             className="btn sm"
             onClick={() => {
-              setRoleFilter([])
+              setTeamFilter([])
               setSearch('')
             }}
           >
             Limpar filtros
           </button>
         )}
+        {concludedProjectIds.size > 0 && (
+          <button
+            className={`btn sm ${showConcluded ? 'primary' : ''}`}
+            onClick={() => setShowConcluded((v) => !v)}
+          >
+            {showConcluded
+              ? 'Ocultar concluídos'
+              : `Mostrar concluídos (${concludedProjectIds.size})`}
+          </button>
+        )}
+        <div className="topbar-spacer" />
+        <button
+          className="btn primary"
+          onClick={() => setEditingProject(emptyProject())}
+        >
+          + Novo projeto
+        </button>
       </div>
 
       <div className="matrix-wrap" onScroll={onScroll}>
@@ -180,7 +226,7 @@ export function TeamLoadBoard() {
           )}
 
           {/* body */}
-          {state.projects.map((p) => (
+          {visibleProjects.map((p) => (
             <Row key={p.id}>
               <button
                 className="mx-proj"
@@ -230,9 +276,9 @@ export function TeamLoadBoard() {
                         return (
                           <div
                             key={a.id}
-                            className="act-card"
+                            className={`act-card status-${a.status}`}
                             draggable
-                            title={`${a.title}\n${a.role} · ${a.loadDays}d${
+                            title={`${a.title}\n${a.role} · ${a.loadDays}d · ${STATUS_LABEL[a.status]}${
                               m ? ` · ${m.name}` : ''
                             }\n${p.code} · ${w.label} · ${d}`}
                             onDragStart={(e) =>
@@ -244,6 +290,18 @@ export function TeamLoadBoard() {
                             <div className="a-foot">
                               <RoleBadge role={a.role} />
                               <span className="load-chip">{a.loadDays}d</span>
+                              <button
+                                className={`status-dot status-${a.status}`}
+                                title={`Status: ${STATUS_LABEL[a.status]} (clique para avançar)`}
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  const i = STATUSES.indexOf(a.status)
+                                  setActivityStatus(
+                                    a.id,
+                                    STATUSES[(i + 1) % STATUSES.length],
+                                  )
+                                }}
+                              />
                               {m && <Avatar member={m} />}
                             </div>
                           </div>
@@ -271,6 +329,7 @@ export function TeamLoadBoard() {
                             role: defaultPlayer?.role ?? 'PM',
                             memberId: defaultMemberId,
                             loadDays: 1,
+                            status: 'execution',
                           })
                         }}
                       >
@@ -450,15 +509,35 @@ function ActivityModal({
         </div>
         <div className="field">
           <label>Carga (dias)</label>
-          <input
-            type="number"
-            step="0.5"
-            min="0.5"
+          <select
             value={a.loadDays}
-            onChange={(e) => set({ loadDays: Number(e.target.value) })}
-          />
+            onChange={(e) => set({ loadDays: Number(e.target.value) as LoadDays })}
+          >
+            {LOAD_DAYS_OPTIONS.map((v) => (
+              <option key={v} value={v}>
+                {v}d
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="field">
+          <label>Status</label>
+          <select
+            value={a.status}
+            onChange={(e) => set({ status: e.target.value as Status })}
+          >
+            {STATUSES.map((s) => (
+              <option key={s} value={s}>
+                {STATUS_LABEL[s]}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
+      <p style={{ color: 'var(--text-muted)', fontSize: 12, marginTop: -8 }}>
+        Precisa de mais de 1 dia? Abra outra atividade — cada kanban representa
+        no máximo um dia de carga.
+      </p>
     </Modal>
   )
 }

@@ -247,6 +247,69 @@ button {
   color: var(--text-muted);
 }
 
+/* ---------- Role pill drill-down (Equipe filter) ---------- */
+.role-pill-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.role-pill-caret {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 9px;
+  padding: 2px 3px;
+  margin-left: -2px;
+  cursor: pointer;
+}
+.role-pill-caret:hover {
+  color: var(--text-h);
+}
+.role-pill-pop {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 40;
+  min-width: 170px;
+  max-height: 260px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 5px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-pop);
+}
+.rp-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 7px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 12.5px;
+  color: var(--text-h);
+  white-space: nowrap;
+}
+.rp-row:hover {
+  background: var(--bg);
+}
+.rp-row.on {
+  background: var(--mh-green-l);
+}
+.rp-row input {
+  margin: 0;
+  accent-color: var(--mh-green);
+}
+.rp-row .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+}
+
 .btn {
   border: 1px solid var(--border-strong);
   background: var(--panel);
@@ -457,6 +520,25 @@ button {
 }
 .modal-body {
   padding: 20px;
+}
+.duration-highlight {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.duration-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-h);
+}
+.duration-type {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--mh-green-d);
+  background: var(--mh-green-l);
+  padding: 2px 8px;
+  border-radius: 999px;
 }
 .modal-foot {
   display: flex;
@@ -696,6 +778,34 @@ button {
 }
 .act-card:active {
   cursor: grabbing;
+}
+/* status border accent — optional per the spec, kept subtle */
+.act-card.status-execution {
+  border-left-color: #2563eb;
+}
+.act-card.status-delayed {
+  border-left-color: var(--risk-high);
+}
+.act-card.status-concluded {
+  border-left-color: var(--risk-low);
+}
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 0;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+.status-dot.status-execution {
+  background: #2563eb;
+}
+.status-dot.status-delayed {
+  background: var(--risk-high);
+}
+.status-dot.status-concluded {
+  background: var(--risk-low);
 }
 .act-card .a-title {
   font-size: 11.5px;

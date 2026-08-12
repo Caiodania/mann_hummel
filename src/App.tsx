@@ -7,7 +7,7 @@ import { GanttBoard } from './components/GanttBoard'
 type Tab = 'carga' | 'pipeline' | 'gantt'
 
 const TABS: { id: Tab; label: string }[] = [
-  { id: 'carga', label: 'Carga da equipe' },
+  { id: 'carga', label: 'Cotação' },
   { id: 'pipeline', label: 'Pipeline' },
   { id: 'gantt', label: 'Gantt' },
 ]
