@@ -1,13 +1,15 @@
 // MANN+HUMMEL planner — data model (single source of truth).
-// Provider is SQLite — no Docker or external server required.
-// The database file is created automatically at prisma/dev.db
+// Provider is PostgreSQL — required for data to survive redeploys (SQLite's
+// file lived on the web service's ephemeral disk, which Render recreates
+// from scratch on every deploy). Local dev and production both point at a
+// Postgres instance via DATABASE_URL; see server/.env.example.
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 

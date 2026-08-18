@@ -1,23 +1,23 @@
 # MANN+HUMMEL — Carga & Pipeline
 
-Full-stack app: **React + Vite** frontend, **Express + Prisma** backend, **SQLite** database
-(zero setup — the DB is a local file at `server/prisma/dev.db`). The database is the single
-source of truth; every user of the same backend sees the same live data.
-
-> Want a shared/team database instead of a local file? Switch `server/prisma/schema.prisma`
-> `provider` to `postgresql` and point `DATABASE_URL` at a Postgres instance (a
-> `docker-compose.yml` for Postgres is included). No app code changes needed.
+Full-stack app: **React + Vite** frontend, **Express + Prisma** backend, **PostgreSQL**
+database. The database is the single source of truth; every user of the same backend sees
+the same live data. Postgres (not a local SQLite file) is required so data survives
+redeploys — see the "Deploy (Render)" section in [README.md](README.md) for why.
 
 ## Requirements
 
 - Node.js 20+
+- A Postgres instance: either `docker compose up -d` (uses `docker-compose.yml`), or point
+  at a managed instance (e.g. the same one used in production).
 
 ## First run
 
 ```bash
 # from the project root
-npm install          # frontend deps + concurrently
-npm run setup        # installs backend deps, creates prisma/dev.db, seeds real data
+npm install                              # frontend deps + concurrently
+cp server/.env.example server/.env       # then edit DATABASE_URL to your Postgres
+npm run setup        # installs backend deps, generates client, pushes schema, seeds real data
 npm run dev          # starts BOTH the API (:3001) and the frontend (:5173)
 ```
 
