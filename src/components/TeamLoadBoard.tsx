@@ -21,6 +21,9 @@ import { ProjectDetail } from './ProjectDetail'
 const CAPACITY_DAYS = 5 // work-days per member per week before overload
 const DAY_W = 106 // px per weekday sub-column
 
+/** Calendar year a project belongs to, derived from its start week ("2026-W31" → 2026). */
+const yearOf = (p: Project) => Number(p.startWeek.split('-W')[0])
+
 export function TeamLoadBoard() {
   const { state, moveActivity, upsertActivity, deleteActivity, setActivityStatus } =
     useStore()
@@ -39,6 +42,12 @@ export function TeamLoadBoard() {
   const [editingProject, setEditingProject] = useState<Project | null>(null)
   const [detailProject, setDetailProject] = useState<Project | null>(null)
   const [showConcluded, setShowConcluded] = useState(false)
+  const [yearFilter, setYearFilter] = useState('')
+
+  const years = useMemo(
+    () => [...new Set(state.projects.map(yearOf))].sort(),
+    [state.projects],
+  )
 
   // A project's "cotação" is done once every activity it has is concluded —
   // keep it out of the way (without deleting any history) unless asked to
@@ -56,9 +65,11 @@ export function TeamLoadBoard() {
         ids.add(projectId)
     return ids
   }, [state.activities])
-  const visibleProjects = showConcluded
-    ? state.projects
-    : state.projects.filter((p) => !concludedProjectIds.has(p.id))
+  const visibleProjects = (
+    showConcluded
+      ? state.projects
+      : state.projects.filter((p) => !concludedProjectIds.has(p.id))
+  ).filter((p) => !yearFilter || yearOf(p) === Number(yearFilter))
 
   const memberById = useMemo(
     () => new Map(state.members.map((m) => [m.id, m])),
@@ -71,6 +82,8 @@ export function TeamLoadBoard() {
 
   const q = search.trim().toLowerCase()
   const matches = (a: Activity) => {
+    const p = projectById.get(a.projectId)
+    if (yearFilter && (!p || yearOf(p) !== Number(yearFilter))) return false
     if (
       teamFilter.length &&
       !teamFilter.includes(a.role) &&
@@ -78,7 +91,6 @@ export function TeamLoadBoard() {
     )
       return false
     if (!q) return true
-    const p = projectById.get(a.projectId)
     const m = memberById.get(a.memberId)
     return (
       a.title.toLowerCase().includes(q) ||
@@ -158,12 +170,28 @@ export function TeamLoadBoard() {
           selected={teamFilter}
           onToggle={toggleTeamFilter}
         />
-        {(teamFilter.length > 0 || q) && (
+        <div className="filter-group">
+          <span className="filter-label">Ano</span>
+          <select
+            className="btn"
+            value={yearFilter}
+            onChange={(e) => setYearFilter(e.target.value)}
+          >
+            <option value="">Todos</option>
+            {years.map((y) => (
+              <option key={y} value={y}>
+                {y}
+              </option>
+            ))}
+          </select>
+        </div>
+        {(teamFilter.length > 0 || q || yearFilter) && (
           <button
             className="btn sm"
             onClick={() => {
               setTeamFilter([])
               setSearch('')
+              setYearFilter('')
             }}
           >
             Limpar filtros
